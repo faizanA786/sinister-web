@@ -1,0 +1,189 @@
+[gd_scene load_steps=13 format=3 uid="uid://bw2lapayxxkto"]
+
+[ext_resource type="Script" path="res://scripts/Menu.gd" id="1_n0of1"]
+[ext_resource type="AudioStream" uid="uid://cekolcxupprmi" path="res://assets/audio/typing.wav" id="1_pojex"]
+[ext_resource type="Shader" path="res://scripts/Filter.gdshader" id="3_crcex"]
+[ext_resource type="FontFile" uid="uid://bkhfisgnnj5x4" path="res://assets/Pixel.ttf" id="4_phh37"]
+[ext_resource type="Texture2D" uid="uid://drqcj8d5bxhya" path="res://assets/sprites/bar.png" id="5_tn78x"]
+
+[sub_resource type="Environment" id="Environment_2wp1a"]
+background_mode = 3
+ambient_light_color = Color(1, 1, 1, 1)
+glow_enabled = true
+glow_normalized = true
+glow_intensity = 4.0
+glow_strength = 0.8
+glow_blend_mode = 0
+glow_hdr_threshold = 0.15
+fog_enabled = true
+volumetric_fog_density = 0.2167
+
+[sub_resource type="Animation" id="Animation_p1wsw"]
+resource_name = "FadeTo_CH1"
+length = 0.55
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VBoxContainer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.784314), Color(1, 1, 1, 0.588235), Color(1, 1, 1, 0.392157), Color(1, 1, 1, 0.196078), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"to_CH1"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_4s45l"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VBoxContainer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ox35v"]
+_data = {
+"FadeTo_CH1": SubResource("Animation_p1wsw"),
+"RESET": SubResource("Animation_4s45l")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e1eny"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_40sol"]
+shader = ExtResource("3_crcex")
+shader_parameter/overlay = true
+shader_parameter/scanlines_opacity = 0.4
+shader_parameter/scanlines_width = 0.25
+shader_parameter/grille_opacity = 0.3
+shader_parameter/resolution = Vector2(640, 480)
+shader_parameter/pixelate = true
+shader_parameter/roll = true
+shader_parameter/roll_speed = 0.5
+shader_parameter/roll_size = 20.0
+shader_parameter/roll_variation = 2.4
+shader_parameter/distort_intensity = 0.05
+shader_parameter/noise_opacity = 0.1
+shader_parameter/noise_speed = 3.0
+shader_parameter/static_noise_intensity = 0.06
+shader_parameter/aberration = 0.03
+shader_parameter/brightness = 1.0
+shader_parameter/discolor = true
+shader_parameter/warp_amount = 0.0
+shader_parameter/clip_warp = false
+shader_parameter/vignette_intensity = 0.4
+shader_parameter/vignette_opacity = 0.5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a108s"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_n0of1")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_2wp1a")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ox35v")
+}
+
+[node name="Type" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("1_pojex")
+volume_db = 5.0
+pitch_scale = 0.5
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_e1eny")
+layout_mode = 0
+offset_right = 480.0
+offset_bottom = 240.0
+color = Color(0, 0, 0, 1)
+metadata/_edit_lock_ = true
+
+[node name="CRTEffect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_40sol")
+layout_mode = 0
+offset_left = 112.0
+offset_top = 16.0
+offset_right = 360.0
+offset_bottom = 224.0
+color = Color(0.34902, 1, 1, 0.0980392)
+metadata/_edit_lock_ = true
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(0.941176, 1, 1, 1)
+self_modulate = Color(1.5, 1.5, 1.5, 1)
+texture_filter = 1
+material = SubResource("ShaderMaterial_a108s")
+layout_mode = 0
+offset_left = 112.0
+offset_top = 16.0
+offset_right = 360.0
+offset_bottom = 224.0
+texture = ExtResource("5_tn78x")
+metadata/_edit_lock_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 160.0
+offset_top = 56.0
+offset_right = 312.0
+offset_bottom = 184.0
+theme_override_constants/separation = 10
+metadata/_edit_group_ = true
+
+[node name="Play" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_hover_color = Color(0.737255, 0.992157, 0.0784314, 1)
+theme_override_fonts/font = ExtResource("4_phh37")
+theme_override_font_sizes/font_size = 16
+text = "Start"
+flat = true
+
+[node name="Options" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_hover_color = Color(0.737255, 0.992157, 0.0784314, 1)
+theme_override_fonts/font = ExtResource("4_phh37")
+theme_override_font_sizes/font_size = 16
+text = "Options"
+flat = true
+
+[node name="Exit" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_hover_color = Color(0.737255, 0.992157, 0.0784314, 1)
+theme_override_fonts/font = ExtResource("4_phh37")
+theme_override_font_sizes/font_size = 16
+text = "Exit"
+flat = true
+
+[connection signal="button_up" from="VBoxContainer/Play" to="." method="_on_play_button_up"]

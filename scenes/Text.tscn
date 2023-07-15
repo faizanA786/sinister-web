@@ -1,0 +1,47 @@
+[gd_scene load_steps=4 format=3 uid="uid://b7r4twa50a1an"]
+
+[ext_resource type="FontFile" uid="uid://bkhfisgnnj5x4" path="res://assets/Pixel.ttf" id="1_eut81"]
+[ext_resource type="Script" path="res://scripts/Text.gd" id="2_dhqhi"]
+[ext_resource type="AudioStream" uid="uid://cekolcxupprmi" path="res://assets/audio/typing.wav" id="3_h1to8"]
+
+[node name="0" type="Label"]
+self_modulate = Color(1.5, 1.5, 1.5, 1)
+texture_filter = 1
+offset_right = 64.0
+offset_bottom = 64.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_eut81")
+theme_override_font_sizes/font_size = 16
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+visible_characters = 0
+visible_ratio = 0.0
+script = ExtResource("2_dhqhi")
+
+[node name="Type" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_h1to8")
+pitch_scale = 1.2
+
+[node name="Delete" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_h1to8")
+pitch_scale = 1.5
+
+[node name="Death" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="Expand" type="Timer" parent="."]
+wait_time = 0.06
+
+[node name="Shrink" type="Timer" parent="."]
+wait_time = 0.05
+
+[node name="Random" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
+
+[connection signal="timeout" from="Death" to="." method="_on_death_timeout"]
+[connection signal="timeout" from="Expand" to="." method="_on_expand_timeout"]
+[connection signal="timeout" from="Shrink" to="." method="_on_shrink_timeout"]
+[connection signal="timeout" from="Random" to="." method="_on_random_timeout"]

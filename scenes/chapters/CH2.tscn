@@ -1,0 +1,1201 @@
+[gd_scene load_steps=53 format=3 uid="uid://bgk3wj2w87l7i"]
+
+[ext_resource type="Script" path="res://scripts/CH2.gd" id="1_qatst"]
+[ext_resource type="AudioStream" uid="uid://61e5wl0bg6fj" path="res://assets/audio/tick.wav" id="2_m4wfn"]
+[ext_resource type="AudioStream" uid="uid://gry643k0xc2s" path="res://assets/audio/stab.wav" id="3_u2b8y"]
+[ext_resource type="AudioStream" uid="uid://dbqr1q18q1wp" path="res://assets/audio/open_door.wav" id="4_agjyi"]
+[ext_resource type="Shader" path="res://scripts/Filter.gdshader" id="5_u2luf"]
+[ext_resource type="Texture2D" uid="uid://drqcj8d5bxhya" path="res://assets/sprites/bar.png" id="6_cv7ks"]
+[ext_resource type="AudioStream" uid="uid://8thtkhqf0vnx" path="res://assets/audio/wind.wav" id="7_bibmp"]
+[ext_resource type="Texture2D" uid="uid://cnanisujfahej" path="res://assets/sprites/House.png" id="8_lq41o"]
+[ext_resource type="PackedScene" uid="uid://dtvlxe4o6qkab" path="res://scenes/art/Tree.tscn" id="9_eok4w"]
+[ext_resource type="AudioStream" uid="uid://c1athksnwqs0c" path="res://assets/audio/voice.mp3" id="10_6ci4w"]
+[ext_resource type="AudioStream" uid="uid://ngqwd43ff570" path="res://assets/audio/heartbeat.mp3" id="10_lbnmq"]
+[ext_resource type="Texture2D" uid="uid://qk57tfwn4mfa" path="res://assets/sprites/Wall.png" id="11_uxnu5"]
+[ext_resource type="Script" path="res://scripts/Kitchen.gd" id="12_2k8ar"]
+[ext_resource type="AudioStream" uid="uid://botc1nqv2h2ui" path="res://assets/audio/dishes.mp3" id="13_g8m5d"]
+[ext_resource type="AudioStream" uid="uid://h85lkr33pj54" path="res://assets/audio/scream1.mp3" id="14_g1kew"]
+[ext_resource type="Texture2D" uid="uid://bdwdjjjmg0b6f" path="res://assets/sprites/Chair.png" id="15_yqx5i"]
+[ext_resource type="PackedScene" uid="uid://c7qwe27wp0vtj" path="res://scenes/NPC.tscn" id="16_pgxbb"]
+[ext_resource type="Texture2D" uid="uid://btm8yo27hha1r" path="res://assets/sprites/Blood1.png" id="17_5x4ek"]
+[ext_resource type="Texture2D" uid="uid://bttxip31hi8lv" path="res://assets/sprites/Key.png" id="18_rv277"]
+[ext_resource type="FontFile" uid="uid://bkhfisgnnj5x4" path="res://assets/Pixel.ttf" id="19_13017"]
+[ext_resource type="Script" path="res://scripts/LivingRoom.gd" id="20_gjsu8"]
+[ext_resource type="AudioStream" uid="uid://cfcc3kkh2j3hu" path="res://assets/audio/tv.mp3" id="21_b2igk"]
+[ext_resource type="AudioStream" uid="uid://bx7xurl45sqac" path="res://assets/audio/scream2.mp3" id="22_lo5v7"]
+[ext_resource type="Script" path="res://scripts/Chat.gd" id="23_unbf8"]
+[ext_resource type="AudioStream" uid="uid://cekolcxupprmi" path="res://assets/audio/typing.wav" id="24_gt705"]
+[ext_resource type="Script" path="res://scripts/Bedroom.gd" id="25_0pv3o"]
+[ext_resource type="PackedScene" uid="uid://cavu1r2dpsvxy" path="res://scenes/Player.tscn" id="26_sxljh"]
+
+[sub_resource type="Environment" id="Environment_suf6b"]
+background_mode = 3
+ambient_light_color = Color(1, 1, 1, 1)
+glow_enabled = true
+glow_normalized = true
+glow_intensity = 4.0
+glow_strength = 0.8
+glow_blend_mode = 0
+glow_hdr_threshold = 0.15
+fog_enabled = true
+volumetric_fog_density = 0.2167
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rwqpr"]
+
+[sub_resource type="Animation" id="Animation_v2px7"]
+resource_name = "Blackout"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Frame/TextureRect:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Frame/CRTEffect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+
+[sub_resource type="Animation" id="Animation_3de8u"]
+resource_name = "FadeToRed_FromWhite"
+length = 0.9
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Frame/TextureRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 0.996078, 0.992157, 1), Color(1, 0.682353, 0.631373, 1), Color(1, 0.533333, 0.466667, 1), Color(1, 0.435294, 0.364706, 1), Color(1, 0.376471, 0.309804, 1), Color(1, 0.27451, 0.215686, 1), Color(1, 0.172549, 0.129412, 1), Color(1, 0.0901961, 0.0666667, 1), Color(0.968627, 0, 0.00784314, 1), Color(0.752941, 0, 0.00392157, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_1iuo2"]
+resource_name = "FadeToWhite_FromRed"
+length = 0.9
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Frame/TextureRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.752941, 0, 0.00392157, 1), Color(0.968627, 0, 0.00784314, 1), Color(1, 0.0901961, 0.0666667, 1), Color(1, 0.172549, 0.129412, 1), Color(1, 0.27451, 0.215686, 1), Color(1, 0.376471, 0.309804, 1), Color(1, 0.435294, 0.364706, 1), Color(1, 0.533333, 0.466667, 1), Color(1, 0.682353, 0.631373, 1), Color(1, 0.996078, 0.992157, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ujlka"]
+resource_name = "FadeToWhite_FromYellow"
+length = 0.9
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Frame/TextureRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.941176, 1, 0, 1), Color(0.941176, 1, 0.0980392, 1), Color(0.941176, 1, 0.196078, 1), Color(0.941176, 1, 0.294118, 1), Color(0.941176, 1, 0.392157, 1), Color(0.941176, 1, 0.490196, 1), Color(0.941176, 1, 0.588235, 1), Color(0.941176, 1, 0.686275, 1), Color(0.941176, 1, 0.784314, 1), Color(0.941176, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_bpfm0"]
+resource_name = "FadeToYellow_FromWhite"
+length = 0.9
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Frame/TextureRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.941176, 1, 1, 1), Color(0.941176, 1, 0.784314, 1), Color(0.941176, 1, 0.686275, 1), Color(0.941176, 1, 0.588235, 1), Color(0.941176, 1, 0.490196, 1), Color(0.941176, 1, 0.392157, 1), Color(0.941176, 1, 0.294118, 1), Color(0.941176, 1, 0.196078, 1), Color(0.941176, 1, 0.0980392, 1), Color(0.941176, 1, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_em4b6"]
+resource_name = "Kill"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("KillRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"stab"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_t3her"]
+resource_name = "Load_CH2"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cover:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(248, 208), Vector2(248, 184), Vector2(248, 160), Vector2(248, 136), Vector2(248, 120), Vector2(248, 96), Vector2(248, 72), Vector2(248, 56), Vector2(248, 16), Vector2(248, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Cover:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(112, 16), Vector2(112, 40), Vector2(112, 64), Vector2(112, 88), Vector2(112, 104), Vector2(112, 128), Vector2(112, 152), Vector2(112, 168), Vector2(112, 208), Vector2(112, 224)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"tick"
+}, {
+"args": [],
+"method": &"tick"
+}, {
+"args": [],
+"method": &"tick"
+}, {
+"args": [],
+"method": &"tick"
+}, {
+"args": [],
+"method": &"tick"
+}, {
+"args": [],
+"method": &"tick"
+}, {
+"args": [],
+"method": &"tick"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_0ihk6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Frame/TextureRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.941176, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Frame/TextureRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Frame/CRTEffect:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Cover:size")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(248, 208)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Cover:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(112, 16)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("KillRect:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8vgk7"]
+_data = {
+"Blackout": SubResource("Animation_v2px7"),
+"FadeToRed_FromWhite": SubResource("Animation_3de8u"),
+"FadeToWhite_FromRed": SubResource("Animation_1iuo2"),
+"FadeToWhite_FromYellow": SubResource("Animation_ujlka"),
+"FadeToYellow_FromWhite": SubResource("Animation_bpfm0"),
+"Kill": SubResource("Animation_em4b6"),
+"Load_CH2": SubResource("Animation_t3her"),
+"RESET": SubResource("Animation_0ihk6")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_x33mk"]
+shader = ExtResource("5_u2luf")
+shader_parameter/overlay = true
+shader_parameter/scanlines_opacity = 0.4
+shader_parameter/scanlines_width = 0.25
+shader_parameter/grille_opacity = 0.3
+shader_parameter/resolution = Vector2(192, 168)
+shader_parameter/pixelate = true
+shader_parameter/roll = true
+shader_parameter/roll_speed = 0.5
+shader_parameter/roll_size = 20.0
+shader_parameter/roll_variation = 2.4
+shader_parameter/distort_intensity = 0.08
+shader_parameter/noise_opacity = 0.2
+shader_parameter/noise_speed = 6.0
+shader_parameter/static_noise_intensity = 0.07
+shader_parameter/aberration = 0.03
+shader_parameter/brightness = 1.0
+shader_parameter/discolor = true
+shader_parameter/warp_amount = 0.0
+shader_parameter/clip_warp = false
+shader_parameter/vignette_intensity = 0.4
+shader_parameter/vignette_opacity = 0.5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yih4k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eu7fi"]
+size = Vector2(23.25, 23)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_spokf"]
+size = Vector2(4, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8sw85"]
+size = Vector2(66.625, 22)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ra6he"]
+size = Vector2(96, 20)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_coo6v"]
+radius = 12.0
+height = 24.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pwpkd"]
+size = Vector2(14, 61)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k7j55"]
+size = Vector2(10, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h3s4x"]
+size = Vector2(96, 50)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jgo12"]
+size = Vector2(89, 11)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2x544"]
+size = Vector2(33, 41)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_po5ef"]
+size = Vector2(66.5, 7.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ew5oh"]
+size = Vector2(52, 31)
+
+[node name="CH2" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qatst")
+metadata/_edit_lock_ = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_suf6b")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_rwqpr")
+layout_mode = 0
+offset_right = 480.0
+offset_bottom = 240.0
+color = Color(0, 0, 0, 1)
+metadata/_edit_lock_ = true
+
+[node name="Tick" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_m4wfn")
+volume_db = 5.0
+pitch_scale = 1.25
+
+[node name="Stab" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_u2b8y")
+volume_db = 5.0
+pitch_scale = 1.2
+
+[node name="Door" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_agjyi")
+volume_db = 5.0
+pitch_scale = 0.85
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+speed_scale = 0.5
+libraries = {
+"": SubResource("AnimationLibrary_8vgk7")
+}
+
+[node name="Frame" type="StaticBody2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="CRTEffect" type="ColorRect" parent="Frame"]
+material = SubResource("ShaderMaterial_x33mk")
+offset_left = 112.0
+offset_top = 16.0
+offset_right = 360.0
+offset_bottom = 224.0
+color = Color(1, 1, 1, 0)
+metadata/_edit_lock_ = true
+
+[node name="TextureRect" type="TextureRect" parent="Frame"]
+modulate = Color(0.941176, 1, 1, 1)
+self_modulate = Color(1.5, 1.5, 1.5, 1)
+texture_filter = 1
+material = SubResource("ShaderMaterial_yih4k")
+offset_left = 112.0
+offset_top = 16.0
+offset_right = 360.0
+offset_bottom = 224.0
+texture = ExtResource("6_cv7ks")
+metadata/_edit_lock_ = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Frame"]
+polygon = PackedVector2Array(360, 16, 120, 16, 120, 24, 360, 24)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Frame"]
+position = Vector2(136, -88.0291)
+rotation = 1.5708
+scale = Vector2(0.86387, 1)
+polygon = PackedVector2Array(360, 16, 120, 16, 120, 24, 360, 24)
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="Frame"]
+position = Vector2(0, 200)
+polygon = PackedVector2Array(360, 16, 120, 16, 120, 24, 360, 24)
+
+[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="Frame"]
+position = Vector2(376, -84.7075)
+rotation = 1.5708
+scale = Vector2(0.847431, 1)
+polygon = PackedVector2Array(360, 16, 120, 16, 120, 24, 360, 24)
+
+[node name="Spawn" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="Wind" type="AudioStreamPlayer2D" parent="Spawn"]
+stream = ExtResource("7_bibmp")
+volume_db = -10.0
+autoplay = true
+
+[node name="House" type="Sprite2D" parent="Spawn"]
+modulate = Color(1, 1, 0, 1)
+texture_filter = 1
+position = Vector2(203, 91)
+scale = Vector2(1.14706, 1.11765)
+texture = ExtResource("8_lq41o")
+
+[node name="Tree" parent="Spawn/House" instance=ExtResource("9_eok4w")]
+position = Vector2(147, 105)
+scale = Vector2(1.76282, 1.91447)
+
+[node name="Tree2" parent="Spawn/House" instance=ExtResource("9_eok4w")]
+position = Vector2(304, 174)
+scale = Vector2(1.76282, 1.91447)
+
+[node name="Tree3" parent="Spawn/House" instance=ExtResource("9_eok4w")]
+position = Vector2(146, 185)
+scale = Vector2(1.76282, 1.91447)
+
+[node name="Tree4" parent="Spawn/House" instance=ExtResource("9_eok4w")]
+position = Vector2(326, 73)
+scale = Vector2(1.76282, 1.91447)
+
+[node name="Tree5" parent="Spawn/House" instance=ExtResource("9_eok4w")]
+position = Vector2(226, 136)
+scale = Vector2(1.76282, 1.91447)
+
+[node name="Tree6" parent="Spawn/House" instance=ExtResource("9_eok4w")]
+position = Vector2(269, 82)
+scale = Vector2(1.76282, 1.91447)
+
+[node name="Tree8" parent="Spawn/House" instance=ExtResource("9_eok4w")]
+position = Vector2(251, 42)
+scale = Vector2(1.76282, 1.91447)
+
+[node name="Tree9" parent="Spawn/House" instance=ExtResource("9_eok4w")]
+position = Vector2(178, 146)
+scale = Vector2(1.76282, 1.91447)
+
+[node name="Tree10" parent="Spawn/House" instance=ExtResource("9_eok4w")]
+position = Vector2(212, 193)
+scale = Vector2(1.76282, 1.91447)
+
+[node name="Tree11" parent="Spawn/House" instance=ExtResource("9_eok4w")]
+position = Vector2(283, 128)
+scale = Vector2(1.76282, 1.91447)
+
+[node name="Tree12" parent="Spawn/House" instance=ExtResource("9_eok4w")]
+position = Vector2(332, 136)
+scale = Vector2(1.76282, 1.91447)
+
+[node name="Tree13" parent="Spawn/House" instance=ExtResource("9_eok4w")]
+position = Vector2(310, 41)
+scale = Vector2(1.76282, 1.91447)
+
+[node name="Tree14" parent="Spawn/House" instance=ExtResource("9_eok4w")]
+position = Vector2(136, 41)
+scale = Vector2(1.76282, 1.91447)
+
+[node name="Tree7" parent="Spawn/House" instance=ExtResource("9_eok4w")]
+position = Vector2(178, 49)
+scale = Vector2(1.76282, 1.91447)
+
+[node name="EnterHouse" type="Area2D" parent="Spawn"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spawn/EnterHouse"]
+position = Vector2(204.375, 93.5)
+shape = SubResource("RectangleShape2D_eu7fi")
+
+[node name="House" type="Node2D" parent="."]
+visible = false
+metadata/_edit_lock_ = true
+
+[node name="Whisper" type="AudioStreamPlayer2D" parent="House"]
+stream = ExtResource("10_6ci4w")
+volume_db = -15.0
+pitch_scale = 0.7
+
+[node name="Heartbeat" type="AudioStreamPlayer2D" parent="House"]
+stream = ExtResource("10_lbnmq")
+volume_db = 2.0
+pitch_scale = 0.8
+
+[node name="Timer" type="Timer" parent="House"]
+wait_time = 2.8
+
+[node name="KitchenDoor" type="Area2D" parent="House"]
+modulate = Color(1, 1, 0, 1)
+monitoring = false
+metadata/_edit_group_ = true
+
+[node name="Wall" type="Sprite2D" parent="House/KitchenDoor"]
+position = Vector2(159, 162)
+scale = Vector2(0.117647, 0.617647)
+texture = ExtResource("11_uxnu5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="House/KitchenDoor"]
+position = Vector2(159, 162)
+shape = SubResource("RectangleShape2D_spokf")
+
+[node name="Kitchen" type="Node2D" parent="House"]
+visible = false
+script = ExtResource("12_2k8ar")
+
+[node name="Dishes" type="AudioStreamPlayer2D" parent="House/Kitchen"]
+stream = ExtResource("13_g8m5d")
+volume_db = -2.0
+pitch_scale = 0.8
+
+[node name="Scream" type="AudioStreamPlayer2D" parent="House/Kitchen"]
+stream = ExtResource("14_g1kew")
+volume_db = 1.0
+pitch_scale = 0.6
+
+[node name="StaticBody2D" type="StaticBody2D" parent="House/Kitchen"]
+
+[node name="Chair" type="Sprite2D" parent="House/Kitchen/StaticBody2D"]
+texture_filter = 1
+position = Vector2(137, 192)
+scale = Vector2(0.470588, 0.588235)
+texture = ExtResource("15_yqx5i")
+
+[node name="Chair2" type="Sprite2D" parent="House/Kitchen/StaticBody2D"]
+texture_filter = 1
+position = Vector2(207, 193)
+scale = Vector2(0.470589, 0.588235)
+texture = ExtResource("15_yqx5i")
+flip_h = true
+
+[node name="Wall" type="Sprite2D" parent="House/Kitchen/StaticBody2D"]
+position = Vector2(172, 196)
+scale = Vector2(1.30882, 0.352941)
+texture = ExtResource("11_uxnu5")
+
+[node name="Wall5" type="Sprite2D" parent="House/Kitchen/StaticBody2D"]
+position = Vector2(286, 45)
+scale = Vector2(2.30147, 0.617647)
+texture = ExtResource("11_uxnu5")
+
+[node name="Wall7" type="Sprite2D" parent="House/Kitchen/StaticBody2D"]
+position = Vector2(331, 67.6875)
+scale = Vector2(0.650735, 1.98162)
+texture = ExtResource("11_uxnu5")
+
+[node name="Wall6" type="Sprite2D" parent="House/Kitchen/StaticBody2D"]
+position = Vector2(177, 45)
+scale = Vector2(2.82353, 0.617647)
+texture = ExtResource("11_uxnu5")
+
+[node name="Wall2" type="Sprite2D" parent="House/Kitchen/StaticBody2D"]
+position = Vector2(160, 187)
+scale = Vector2(0.0882353, 0.176471)
+texture = ExtResource("11_uxnu5")
+
+[node name="Wall3" type="Sprite2D" parent="House/Kitchen/StaticBody2D"]
+position = Vector2(181, 189)
+scale = Vector2(0.0882353, 0.117647)
+texture = ExtResource("11_uxnu5")
+
+[node name="Wall4" type="Sprite2D" parent="House/Kitchen/StaticBody2D"]
+position = Vector2(184, 188)
+scale = Vector2(0.0882353, 0.117647)
+texture = ExtResource("11_uxnu5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="House/Kitchen/StaticBody2D"]
+position = Vector2(331, 67.875)
+rotation = -1.5708
+shape = SubResource("RectangleShape2D_8sw85")
+disabled = true
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="House/Kitchen/StaticBody2D"]
+position = Vector2(177, 45)
+shape = SubResource("RectangleShape2D_ra6he")
+disabled = true
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="House/Kitchen/StaticBody2D"]
+position = Vector2(174, 193)
+shape = SubResource("RectangleShape2D_ra6he")
+disabled = true
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="House/Kitchen/StaticBody2D"]
+position = Vector2(294, 45)
+shape = SubResource("RectangleShape2D_ra6he")
+disabled = true
+metadata/_edit_lock_ = true
+
+[node name="NPC_A" type="Area2D" parent="House/Kitchen"]
+monitoring = false
+
+[node name="NPC" parent="House/Kitchen/NPC_A" instance=ExtResource("16_pgxbb")]
+position = Vector2(282, 63)
+rotation = -1.5708
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="House/Kitchen/NPC_A"]
+position = Vector2(282, 71)
+rotation = -1.5708
+shape = SubResource("CapsuleShape2D_coo6v")
+
+[node name="Blood" type="Sprite2D" parent="House/Kitchen"]
+visible = false
+texture_filter = 1
+position = Vector2(282, 64)
+texture = ExtResource("17_5x4ek")
+
+[node name="Return" type="Area2D" parent="House/Kitchen"]
+visible = false
+modulate = Color(1, 1, 0, 1)
+position = Vector2(172, 33)
+monitoring = false
+metadata/_edit_group_ = true
+
+[node name="Wall" type="Sprite2D" parent="House/Kitchen/Return"]
+position = Vector2(159, 162)
+scale = Vector2(0.117647, 0.617647)
+texture = ExtResource("11_uxnu5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="House/Kitchen/Return"]
+position = Vector2(159, 162)
+shape = SubResource("RectangleShape2D_spokf")
+
+[node name="Key" type="Sprite2D" parent="House/Kitchen"]
+visible = false
+texture_filter = 1
+position = Vector2(265.969, 128.291)
+scale = Vector2(1.0039, 1.03638)
+texture = ExtResource("18_rv277")
+
+[node name="Label" type="Label" parent="House/Kitchen/Key"]
+offset_left = -74.6777
+offset_top = -7.99996
+offset_right = -10.6777
+offset_bottom = 11.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("19_13017")
+text = "Kill Her"
+
+[node name="LivingRoomDoor" type="Area2D" parent="House"]
+visible = false
+modulate = Color(1, 1, 0, 1)
+position = Vector2(135, -97)
+monitoring = false
+metadata/_edit_group_ = true
+
+[node name="Wall" type="Sprite2D" parent="House/LivingRoomDoor"]
+position = Vector2(159, 162)
+scale = Vector2(0.117647, 0.617647)
+texture = ExtResource("11_uxnu5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="House/LivingRoomDoor"]
+position = Vector2(159, 162)
+shape = SubResource("RectangleShape2D_spokf")
+
+[node name="LivingRoom" type="Node2D" parent="House"]
+visible = false
+script = ExtResource("20_gjsu8")
+
+[node name="TV" type="AudioStreamPlayer2D" parent="House/LivingRoom"]
+stream = ExtResource("21_b2igk")
+
+[node name="Scream" type="AudioStreamPlayer2D" parent="House/LivingRoom"]
+stream = ExtResource("22_lo5v7")
+pitch_scale = 0.9
+
+[node name="Timer" type="Timer" parent="House/LivingRoom"]
+wait_time = 3.0
+one_shot = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="House/LivingRoom"]
+
+[node name="Wall" type="Sprite2D" parent="House/LivingRoom/StaticBody2D"]
+position = Vector2(237, 126)
+scale = Vector2(2.58823, 0.191176)
+texture = ExtResource("11_uxnu5")
+
+[node name="Wall16" type="Sprite2D" parent="House/LivingRoom/StaticBody2D"]
+position = Vector2(236, 66.875)
+scale = Vector2(2.70588, 0.360294)
+texture = ExtResource("11_uxnu5")
+
+[node name="Wall17" type="Sprite2D" parent="House/LivingRoom/StaticBody2D"]
+position = Vector2(135, 180)
+rotation = 1.5708
+scale = Vector2(1.76499, 0.360294)
+texture = ExtResource("11_uxnu5")
+
+[node name="Wall2" type="Sprite2D" parent="House/LivingRoom/StaticBody2D"]
+position = Vector2(196, 120)
+rotation = 1.5708
+scale = Vector2(0.533115, 0.191176)
+texture = ExtResource("11_uxnu5")
+
+[node name="Wall4" type="Sprite2D" parent="House/LivingRoom/StaticBody2D"]
+position = Vector2(208.25, 45.0843)
+rotation = 1.5708
+scale = Vector2(0.9159, 0.191176)
+texture = ExtResource("11_uxnu5")
+
+[node name="Wall6" type="Sprite2D" parent="House/LivingRoom/StaticBody2D"]
+position = Vector2(264.25, 45.25)
+rotation = 1.5708
+scale = Vector2(0.9159, 0.191176)
+texture = ExtResource("11_uxnu5")
+
+[node name="Wall5" type="Sprite2D" parent="House/LivingRoom/StaticBody2D"]
+position = Vector2(236.131, 58.25)
+scale = Vector2(1.83052, 0.191176)
+texture = ExtResource("11_uxnu5")
+
+[node name="Wall8" type="Sprite2D" parent="House/LivingRoom/StaticBody2D"]
+position = Vector2(220, 40)
+scale = Vector2(0.308643, 0.0661764)
+texture = ExtResource("11_uxnu5")
+
+[node name="Wall9" type="Sprite2D" parent="House/LivingRoom/StaticBody2D"]
+position = Vector2(227, 41)
+scale = Vector2(0.308643, 0.0661764)
+texture = ExtResource("11_uxnu5")
+
+[node name="Wall10" type="Sprite2D" parent="House/LivingRoom/StaticBody2D"]
+position = Vector2(235, 41)
+scale = Vector2(0.308643, 0.0661764)
+texture = ExtResource("11_uxnu5")
+
+[node name="Wall11" type="Sprite2D" parent="House/LivingRoom/StaticBody2D"]
+position = Vector2(240, 40)
+scale = Vector2(0.308643, 0.0661764)
+texture = ExtResource("11_uxnu5")
+
+[node name="Wall12" type="Sprite2D" parent="House/LivingRoom/StaticBody2D"]
+position = Vector2(234, 50)
+scale = Vector2(0.308643, 0.0661764)
+texture = ExtResource("11_uxnu5")
+
+[node name="Wall13" type="Sprite2D" parent="House/LivingRoom/StaticBody2D"]
+position = Vector2(243, 51)
+scale = Vector2(0.308643, 0.0661764)
+texture = ExtResource("11_uxnu5")
+
+[node name="Wall14" type="Sprite2D" parent="House/LivingRoom/StaticBody2D"]
+position = Vector2(246, 49)
+scale = Vector2(0.308643, 0.0661764)
+texture = ExtResource("11_uxnu5")
+
+[node name="Wall15" type="Sprite2D" parent="House/LivingRoom/StaticBody2D"]
+position = Vector2(218, 47)
+scale = Vector2(0.308643, 0.0661764)
+texture = ExtResource("11_uxnu5")
+
+[node name="Wall7" type="Sprite2D" parent="House/LivingRoom/StaticBody2D"]
+position = Vector2(236.25, 32.25)
+scale = Vector2(1.83052, 0.191176)
+texture = ExtResource("11_uxnu5")
+
+[node name="Wall3" type="Sprite2D" parent="House/LivingRoom/StaticBody2D"]
+position = Vector2(278, 120)
+rotation = 1.5708
+scale = Vector2(0.533115, 0.191176)
+texture = ExtResource("11_uxnu5")
+
+[node name="Chair" type="Sprite2D" parent="House/LivingRoom/StaticBody2D"]
+position = Vector2(152, 198)
+scale = Vector2(0.441177, 0.529412)
+texture = ExtResource("15_yqx5i")
+flip_h = true
+
+[node name="Chair3" type="Sprite2D" parent="House/LivingRoom/StaticBody2D"]
+position = Vector2(157, 161)
+scale = Vector2(0.441177, 0.529412)
+texture = ExtResource("15_yqx5i")
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="House/LivingRoom/StaticBody2D"]
+position = Vector2(134, 180.5)
+shape = SubResource("RectangleShape2D_pwpkd")
+disabled = true
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="House/LivingRoom/StaticBody2D"]
+position = Vector2(157, 161)
+shape = SubResource("RectangleShape2D_k7j55")
+disabled = true
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="House/LivingRoom/StaticBody2D"]
+position = Vector2(196, 119)
+shape = SubResource("RectangleShape2D_k7j55")
+disabled = true
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="House/LivingRoom/StaticBody2D"]
+position = Vector2(278, 121)
+shape = SubResource("RectangleShape2D_k7j55")
+disabled = true
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="House/LivingRoom/StaticBody2D"]
+position = Vector2(152, 198)
+shape = SubResource("RectangleShape2D_k7j55")
+disabled = true
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="House/LivingRoom/StaticBody2D"]
+position = Vector2(236, 53)
+shape = SubResource("RectangleShape2D_h3s4x")
+disabled = true
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="House/LivingRoom/StaticBody2D"]
+position = Vector2(235.5, 127.5)
+shape = SubResource("RectangleShape2D_jgo12")
+disabled = true
+
+[node name="NPC_B" type="Area2D" parent="House/LivingRoom"]
+position = Vector2(-45, 41)
+monitoring = false
+
+[node name="NPC" parent="House/LivingRoom/NPC_B" instance=ExtResource("16_pgxbb")]
+position = Vector2(282, 71)
+rotation = -1.5708
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="House/LivingRoom/NPC_B"]
+position = Vector2(282, 65)
+rotation = -1.5708
+shape = SubResource("CapsuleShape2D_coo6v")
+
+[node name="Label" type="Label" parent="House/LivingRoom/NPC_B"]
+self_modulate = Color(1.5, 1.5, 1.5, 1)
+texture_filter = 1
+offset_left = 252.0
+offset_top = 50.0
+offset_right = 316.0
+offset_bottom = 66.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("19_13017")
+theme_override_font_sizes/font_size = 8
+text = "Dad?"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+visible_characters = 0
+visible_ratio = 0.0
+script = ExtResource("23_unbf8")
+
+[node name="Type" type="AudioStreamPlayer2D" parent="House/LivingRoom/NPC_B/Label"]
+stream = ExtResource("24_gt705")
+pitch_scale = 1.3
+
+[node name="Death" type="Timer" parent="House/LivingRoom/NPC_B/Label"]
+wait_time = 1.5
+one_shot = true
+
+[node name="Expand" type="Timer" parent="House/LivingRoom/NPC_B/Label"]
+wait_time = 0.06
+
+[node name="Shrink" type="Timer" parent="House/LivingRoom/NPC_B/Label"]
+wait_time = 0.05
+
+[node name="Label2" type="Label" parent="House/LivingRoom/NPC_B"]
+self_modulate = Color(1.5, 1.5, 1.5, 1)
+texture_filter = 1
+offset_left = 239.0
+offset_top = 50.0
+offset_right = 324.0
+offset_bottom = 66.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("19_13017")
+theme_override_font_sizes/font_size = 8
+text = "What are you doing?"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+visible_characters = 0
+visible_ratio = 0.0
+script = ExtResource("23_unbf8")
+
+[node name="Type" type="AudioStreamPlayer2D" parent="House/LivingRoom/NPC_B/Label2"]
+stream = ExtResource("24_gt705")
+pitch_scale = 1.2
+
+[node name="Delete" type="AudioStreamPlayer2D" parent="House/LivingRoom/NPC_B/Label2"]
+stream = ExtResource("24_gt705")
+pitch_scale = 1.5
+
+[node name="Death" type="Timer" parent="House/LivingRoom/NPC_B/Label2"]
+wait_time = 2.0
+one_shot = true
+
+[node name="Expand" type="Timer" parent="House/LivingRoom/NPC_B/Label2"]
+wait_time = 0.06
+
+[node name="Shrink" type="Timer" parent="House/LivingRoom/NPC_B/Label2"]
+wait_time = 0.05
+
+[node name="Return" type="Area2D" parent="House/LivingRoom"]
+visible = false
+modulate = Color(1, 1, 0, 1)
+position = Vector2(172, 33)
+monitoring = false
+metadata/_edit_group_ = true
+
+[node name="Wall" type="Sprite2D" parent="House/LivingRoom/Return"]
+position = Vector2(159, 162)
+scale = Vector2(0.117647, 0.617647)
+texture = ExtResource("11_uxnu5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="House/LivingRoom/Return"]
+position = Vector2(159, 162)
+shape = SubResource("RectangleShape2D_spokf")
+
+[node name="Blood" type="Sprite2D" parent="House/LivingRoom"]
+visible = false
+texture_filter = 1
+position = Vector2(237, 113)
+texture = ExtResource("17_5x4ek")
+
+[node name="BedroomDoor" type="Area2D" parent="House"]
+visible = false
+modulate = Color(1, 1, 0, 1)
+position = Vector2(154, 18)
+monitoring = false
+metadata/_edit_group_ = true
+
+[node name="Wall" type="Sprite2D" parent="House/BedroomDoor"]
+position = Vector2(159, 162)
+scale = Vector2(0.117647, 0.617647)
+texture = ExtResource("11_uxnu5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="House/BedroomDoor"]
+position = Vector2(159, 162)
+shape = SubResource("RectangleShape2D_spokf")
+
+[node name="Bedroom" type="Node2D" parent="House"]
+visible = false
+script = ExtResource("25_0pv3o")
+
+[node name="Timer" type="Timer" parent="House/Bedroom"]
+wait_time = 0.8
+one_shot = true
+
+[node name="Label" type="Label" parent="House/Bedroom"]
+texture_filter = 1
+offset_left = 213.0
+offset_top = 54.0
+offset_right = 352.0
+offset_bottom = 68.0
+theme_override_fonts/font = ExtResource("19_13017")
+theme_override_font_sizes/font_size = 8
+text = "What the hell, are you ok?!"
+horizontal_alignment = 1
+vertical_alignment = 1
+visible_characters = 0
+visible_ratio = 0.0
+script = ExtResource("23_unbf8")
+
+[node name="Type" type="AudioStreamPlayer2D" parent="House/Bedroom/Label"]
+stream = ExtResource("24_gt705")
+pitch_scale = 1.3
+
+[node name="Expand" type="Timer" parent="House/Bedroom/Label"]
+wait_time = 0.06
+
+[node name="Death" type="Timer" parent="House/Bedroom/Label"]
+wait_time = 2.0
+
+[node name="Shrink" type="Timer" parent="House/Bedroom/Label"]
+wait_time = 0.05
+
+[node name="Blood" type="Sprite2D" parent="House/Bedroom"]
+visible = false
+texture_filter = 1
+position = Vector2(255, 48)
+texture = ExtResource("17_5x4ek")
+
+[node name="NPC" parent="House/Bedroom" instance=ExtResource("16_pgxbb")]
+texture_filter = 1
+position = Vector2(254, 49)
+rotation = 1.5708
+
+[node name="NPC_C" type="Area2D" parent="House/Bedroom/NPC"]
+position = Vector2(-28, 317)
+rotation = -1.5708
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="House/Bedroom/NPC/NPC_C"]
+position = Vector2(317, 27)
+rotation = -1.5708
+shape = SubResource("CapsuleShape2D_coo6v")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="House/Bedroom"]
+
+[node name="Wall" type="Sprite2D" parent="House/Bedroom/StaticBody2D"]
+position = Vector2(152, 191)
+scale = Vector2(1.35294, 0.191176)
+texture = ExtResource("11_uxnu5")
+
+[node name="Wall12" type="Sprite2D" parent="House/Bedroom/StaticBody2D"]
+position = Vector2(268, 31)
+scale = Vector2(1.875, 0.148897)
+texture = ExtResource("11_uxnu5")
+
+[node name="Wall2" type="Sprite2D" parent="House/Bedroom/StaticBody2D"]
+position = Vector2(132, 197)
+rotation = 1.5708
+scale = Vector2(0.528431, 0.191176)
+texture = ExtResource("11_uxnu5")
+
+[node name="Wall7" type="Sprite2D" parent="House/Bedroom/StaticBody2D"]
+position = Vector2(335.999, 121)
+rotation = 1.5708
+scale = Vector2(0.989736, 0.45618)
+texture = ExtResource("11_uxnu5")
+
+[node name="Wall3" type="Sprite2D" parent="House/Bedroom/StaticBody2D"]
+position = Vector2(172, 197)
+rotation = 1.5708
+scale = Vector2(0.528431, 0.191176)
+texture = ExtResource("11_uxnu5")
+
+[node name="Wall8" type="Sprite2D" parent="House/Bedroom/StaticBody2D"]
+position = Vector2(129.25, 49.6372)
+rotation = 1.5708
+scale = Vector2(0.528431, 0.191176)
+texture = ExtResource("11_uxnu5")
+
+[node name="Wall11" type="Sprite2D" parent="House/Bedroom/StaticBody2D"]
+position = Vector2(129.25, 38.3103)
+rotation = 1.5708
+scale = Vector2(0.194721, 0.191176)
+texture = ExtResource("11_uxnu5")
+
+[node name="Wall10" type="Sprite2D" parent="House/Bedroom/StaticBody2D"]
+position = Vector2(176.25, 49.6372)
+rotation = 1.5708
+scale = Vector2(0.528431, 0.191176)
+texture = ExtResource("11_uxnu5")
+
+[node name="Wall9" type="Sprite2D" parent="House/Bedroom/StaticBody2D"]
+position = Vector2(153.258, 43.6372)
+scale = Vector2(1.52892, 0.191176)
+texture = ExtResource("11_uxnu5")
+
+[node name="Wall4" type="Sprite2D" parent="House/Bedroom/StaticBody2D"]
+position = Vector2(144.898, 185.985)
+rotation = 1.5708
+scale = Vector2(0.176394, 0.126327)
+texture = ExtResource("11_uxnu5")
+
+[node name="Wall5" type="Sprite2D" parent="House/Bedroom/StaticBody2D"]
+position = Vector2(148, 187)
+rotation = 1.5708
+scale = Vector2(0.176394, 0.126327)
+texture = ExtResource("11_uxnu5")
+
+[node name="Wall6" type="Sprite2D" parent="House/Bedroom/StaticBody2D"]
+position = Vector2(164, 185)
+rotation = 1.5708
+scale = Vector2(0.269035, 0.283817)
+texture = ExtResource("11_uxnu5")
+
+[node name="Chair" type="Sprite2D" parent="House/Bedroom/StaticBody2D"]
+texture_filter = 1
+position = Vector2(319, 121)
+scale = Vector2(0.529412, 0.558824)
+texture = ExtResource("15_yqx5i")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="House/Bedroom/StaticBody2D"]
+position = Vector2(328.5, 121.5)
+shape = SubResource("RectangleShape2D_2x544")
+disabled = true
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="House/Bedroom/StaticBody2D"]
+position = Vector2(266.75, 31)
+shape = SubResource("RectangleShape2D_po5ef")
+disabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="House/Bedroom/StaticBody2D"]
+position = Vector2(152, 192.5)
+shape = SubResource("RectangleShape2D_ew5oh")
+disabled = true
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="House/Bedroom/StaticBody2D"]
+position = Vector2(153, 42)
+shape = SubResource("RectangleShape2D_ew5oh")
+disabled = true
+
+[node name="Player" parent="." instance=ExtResource("26_sxljh")]
+position = Vector2(271, 192)
+rotation = -1.5708
+
+[node name="Cover" type="ColorRect" parent="."]
+top_level = true
+layout_mode = 0
+offset_left = 112.0
+offset_top = 16.0
+offset_right = 360.0
+offset_bottom = 224.0
+color = Color(0, 0, 0, 1)
+metadata/_edit_lock_ = true
+
+[node name="KillRect" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+top_level = true
+layout_mode = 0
+offset_left = 112.0
+offset_top = 16.0
+offset_right = 360.0
+offset_bottom = 224.0
+color = Color(1, 0, 0, 1)
+metadata/_edit_lock_ = true
+
+[connection signal="finished" from="Spawn/Wind" to="." method="_on_wind_finished"]
+[connection signal="body_entered" from="Spawn/EnterHouse" to="." method="_on_enter_house_body_entered"]
+[connection signal="finished" from="House/Whisper" to="." method="_on_whisper_finished"]
+[connection signal="timeout" from="House/Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="House/KitchenDoor" to="." method="_on_kitchen_door_body_entered"]
+[connection signal="finished" from="House/Kitchen/Dishes" to="House/Kitchen" method="_on_dishes_finished"]
+[connection signal="body_entered" from="House/Kitchen/NPC_A" to="House/Kitchen" method="_on_npc_a_body_entered"]
+[connection signal="body_exited" from="House/Kitchen/NPC_A" to="House/Kitchen" method="_on_npc_a_body_exited"]
+[connection signal="body_entered" from="House/Kitchen/Return" to="House/Kitchen" method="_on_return_body_entered"]
+[connection signal="body_entered" from="House/LivingRoomDoor" to="." method="_on_living_room_door_body_entered"]
+[connection signal="finished" from="House/LivingRoom/TV" to="House/LivingRoom" method="_on_tv_finished"]
+[connection signal="timeout" from="House/LivingRoom/Timer" to="House/LivingRoom" method="_on_timer_timeout"]
+[connection signal="body_entered" from="House/LivingRoom/NPC_B" to="House/LivingRoom" method="_on_npc_b_body_entered"]
+[connection signal="body_exited" from="House/LivingRoom/NPC_B" to="House/LivingRoom" method="_on_npc_b_body_exited"]
+[connection signal="timeout" from="House/LivingRoom/NPC_B/Label/Death" to="House/LivingRoom/NPC_B/Label" method="_on_death_timeout" flags=18]
+[connection signal="timeout" from="House/LivingRoom/NPC_B/Label/Expand" to="House/LivingRoom/NPC_B/Label" method="_on_expand_timeout" flags=18]
+[connection signal="timeout" from="House/LivingRoom/NPC_B/Label/Shrink" to="House/LivingRoom/NPC_B/Label" method="_on_shrink_timeout" flags=18]
+[connection signal="timeout" from="House/LivingRoom/NPC_B/Label2/Death" to="House/LivingRoom/NPC_B/Label2" method="_on_death_timeout" flags=18]
+[connection signal="timeout" from="House/LivingRoom/NPC_B/Label2/Expand" to="House/LivingRoom/NPC_B/Label2" method="_on_expand_timeout" flags=18]
+[connection signal="timeout" from="House/LivingRoom/NPC_B/Label2/Shrink" to="House/LivingRoom/NPC_B/Label2" method="_on_shrink_timeout" flags=18]
+[connection signal="body_entered" from="House/LivingRoom/Return" to="House/LivingRoom" method="_on_return_body_entered"]
+[connection signal="body_entered" from="House/BedroomDoor" to="." method="_on_bedroom_door_body_entered"]
+[connection signal="timeout" from="House/Bedroom/Timer" to="House/Bedroom" method="_on_timer_timeout"]
+[connection signal="timeout" from="House/Bedroom/Label/Expand" to="House/Bedroom/Label" method="_on_expand_timeout"]
+[connection signal="timeout" from="House/Bedroom/Label/Death" to="House/Bedroom/Label" method="_on_death_timeout"]
+[connection signal="timeout" from="House/Bedroom/Label/Shrink" to="House/Bedroom/Label" method="_on_shrink_timeout"]
+[connection signal="body_entered" from="House/Bedroom/NPC/NPC_C" to="House/Bedroom" method="_on_npc_c_body_entered"]
+[connection signal="body_exited" from="House/Bedroom/NPC/NPC_C" to="House/Bedroom" method="_on_npc_c_body_exited"]
