@@ -28,13 +28,13 @@ stream = ExtResource("3_myapm")
 pitch_scale = 1.5
 
 [node name="Expand" type="Timer" parent="."]
-wait_time = 0.08
+wait_time = 0.1
 
 [node name="Shrink" type="Timer" parent="."]
 wait_time = 0.05
 
 [node name="Random" type="Timer" parent="."]
-wait_time = 0.3
+wait_time = 0.4
 one_shot = true
 
 [connection signal="timeout" from="Expand" to="." method="_on_expand_timeout"]

@@ -12,17 +12,20 @@ func _physics_process(_delta):
 	totalSize = get_total_character_count()
 
 func _on_expand_timeout():
-	$Type.set_pitch_scale(randf_range(1.15, 1.22))
-	textSize += 1
-	set_visible_characters(textSize)
-	stop = randi_range(0, 16)
-	if stop == 1:
-		$Expand.stop()
-		$Random.start()
-	if textSize >= totalSize:
-		$Expand.stop()
+	if Input.get_action_raw_strength("Skip_Text") and not textSize >= totalSize:
+		textSize += 2
+		$Delete.play()
 	else:
+		$Type.set_pitch_scale(randf_range(1.15, 1.22))
 		$Type.play()
+		textSize += 1
+		stop = randi_range(0, 8)
+		if stop == 1:
+			$Expand.stop()
+			$Random.start()
+		if textSize >= totalSize:
+			$Expand.stop()
+	set_visible_characters(textSize)
 
 func _on_shrink_timeout():
 	$Delete.play()

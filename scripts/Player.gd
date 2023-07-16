@@ -3,7 +3,7 @@ extends CharacterBody2D
 const SPEED = 40
 var target = null
 var lookAt = 0
-enum{GRAVEL,WOOD}
+enum{GRAVEL,WOOD,STONE}
 var soundState = GRAVEL
 var bloody = false
 @onready var bloodText = load("res://assets/sprites/Blood1.png")

@@ -1,0 +1,412 @@
+[gd_scene load_steps=20 format=3 uid="uid://cit7n88ihu6gv"]
+
+[ext_resource type="Shader" path="res://scripts/Filter.gdshader" id="1_elx13"]
+[ext_resource type="Script" path="res://scripts/CH4.gd" id="1_wn66y"]
+[ext_resource type="AudioStream" uid="uid://61e5wl0bg6fj" path="res://assets/audio/tick.wav" id="2_2a5dv"]
+[ext_resource type="Texture2D" uid="uid://drqcj8d5bxhya" path="res://assets/sprites/bar.png" id="2_7lvnl"]
+[ext_resource type="PackedScene" uid="uid://cavu1r2dpsvxy" path="res://scenes/Player.tscn" id="4_dkv2x"]
+
+[sub_resource type="Environment" id="Environment_56cj1"]
+background_mode = 3
+ambient_light_color = Color(1, 1, 1, 1)
+glow_enabled = true
+glow_normalized = true
+glow_intensity = 4.0
+glow_strength = 0.8
+glow_blend_mode = 0
+glow_hdr_threshold = 0.15
+fog_enabled = true
+volumetric_fog_density = 0.2167
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mxdcx"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lwg80"]
+shader = ExtResource("1_elx13")
+shader_parameter/overlay = true
+shader_parameter/scanlines_opacity = 0.4
+shader_parameter/scanlines_width = 0.25
+shader_parameter/grille_opacity = 0.3
+shader_parameter/resolution = Vector2(192, 168)
+shader_parameter/pixelate = true
+shader_parameter/roll = true
+shader_parameter/roll_speed = 0.5
+shader_parameter/roll_size = 20.0
+shader_parameter/roll_variation = 2.4
+shader_parameter/distort_intensity = 0.05
+shader_parameter/noise_opacity = 0.1
+shader_parameter/noise_speed = 3.0
+shader_parameter/static_noise_intensity = 0.06
+shader_parameter/aberration = 0.03
+shader_parameter/brightness = 1.0
+shader_parameter/discolor = true
+shader_parameter/warp_amount = 0.0
+shader_parameter/clip_warp = false
+shader_parameter/vignette_intensity = 0.4
+shader_parameter/vignette_opacity = 0.5
+
+[sub_resource type="Animation" id="Animation_v2px7"]
+resource_name = "Blackout"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Frame/TextureRect:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Frame/CRTEffect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+
+[sub_resource type="Animation" id="Animation_3de8u"]
+resource_name = "FadeToRed_FromWhite"
+length = 0.9
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Frame/TextureRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 0.996078, 0.992157, 1), Color(1, 0.682353, 0.631373, 1), Color(1, 0.533333, 0.466667, 1), Color(1, 0.435294, 0.364706, 1), Color(1, 0.376471, 0.309804, 1), Color(1, 0.27451, 0.215686, 1), Color(1, 0.172549, 0.129412, 1), Color(1, 0.0901961, 0.0666667, 1), Color(0.968627, 0, 0.00784314, 1), Color(0.752941, 0, 0.00392157, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_1iuo2"]
+resource_name = "FadeToWhite_FromRed"
+length = 0.9
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Frame/TextureRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.752941, 0, 0.00392157, 1), Color(0.968627, 0, 0.00784314, 1), Color(1, 0.0901961, 0.0666667, 1), Color(1, 0.172549, 0.129412, 1), Color(1, 0.27451, 0.215686, 1), Color(1, 0.376471, 0.309804, 1), Color(1, 0.435294, 0.364706, 1), Color(1, 0.533333, 0.466667, 1), Color(1, 0.682353, 0.631373, 1), Color(1, 0.996078, 0.992157, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ujlka"]
+resource_name = "FadeToWhite_FromYellow"
+length = 0.9
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Frame/TextureRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.941176, 1, 0, 1), Color(0.941176, 1, 0.0980392, 1), Color(0.941176, 1, 0.196078, 1), Color(0.941176, 1, 0.294118, 1), Color(0.941176, 1, 0.392157, 1), Color(0.941176, 1, 0.490196, 1), Color(0.941176, 1, 0.588235, 1), Color(0.941176, 1, 0.686275, 1), Color(0.941176, 1, 0.784314, 1), Color(0.941176, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_bpfm0"]
+resource_name = "FadeToYellow_FromWhite"
+length = 0.9
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Frame/TextureRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.941176, 1, 1, 1), Color(0.941176, 1, 0.784314, 1), Color(0.941176, 1, 0.686275, 1), Color(0.941176, 1, 0.588235, 1), Color(0.941176, 1, 0.490196, 1), Color(0.941176, 1, 0.392157, 1), Color(0.941176, 1, 0.294118, 1), Color(0.941176, 1, 0.196078, 1), Color(0.941176, 1, 0.0980392, 1), Color(0.941176, 1, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_em4b6"]
+resource_name = "Kill"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("KillRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"stab"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_t3her"]
+resource_name = "Load_CH2"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cover:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(112, 16), Vector2(112, 40), Vector2(112, 64), Vector2(112, 88), Vector2(112, 104), Vector2(112, 128), Vector2(112, 152), Vector2(112, 168), Vector2(112, 208), Vector2(112, 224)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"tick"
+}, {
+"args": [],
+"method": &"tick"
+}, {
+"args": [],
+"method": &"tick"
+}, {
+"args": [],
+"method": &"tick"
+}, {
+"args": [],
+"method": &"tick"
+}, {
+"args": [],
+"method": &"tick"
+}, {
+"args": [],
+"method": &"tick"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_0ihk6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Frame/TextureRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.941176, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Frame/TextureRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Frame/CRTEffect:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Cover:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(112, 16)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8vgk7"]
+_data = {
+"Blackout": SubResource("Animation_v2px7"),
+"FadeToRed_FromWhite": SubResource("Animation_3de8u"),
+"FadeToWhite_FromRed": SubResource("Animation_1iuo2"),
+"FadeToWhite_FromYellow": SubResource("Animation_ujlka"),
+"FadeToYellow_FromWhite": SubResource("Animation_bpfm0"),
+"Kill": SubResource("Animation_em4b6"),
+"Load_CH2": SubResource("Animation_t3her"),
+"RESET": SubResource("Animation_0ihk6")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ye554"]
+shader = ExtResource("1_elx13")
+shader_parameter/overlay = true
+shader_parameter/scanlines_opacity = 0.4
+shader_parameter/scanlines_width = 0.25
+shader_parameter/grille_opacity = 0.3
+shader_parameter/resolution = Vector2(192, 168)
+shader_parameter/pixelate = true
+shader_parameter/roll = true
+shader_parameter/roll_speed = 0.5
+shader_parameter/roll_size = 20.0
+shader_parameter/roll_variation = 2.4
+shader_parameter/distort_intensity = 0.08
+shader_parameter/noise_opacity = 0.2
+shader_parameter/noise_speed = 6.0
+shader_parameter/static_noise_intensity = 0.07
+shader_parameter/aberration = 0.03
+shader_parameter/brightness = 1.0
+shader_parameter/discolor = true
+shader_parameter/warp_amount = 0.0
+shader_parameter/clip_warp = false
+shader_parameter/vignette_intensity = 0.4
+shader_parameter/vignette_opacity = 0.5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sotp1"]
+
+[node name="CH4" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wn66y")
+metadata/_edit_lock_ = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_56cj1")
+
+[node name="Tick" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_2a5dv")
+volume_db = 5.0
+pitch_scale = 1.25
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_mxdcx")
+layout_mode = 0
+offset_right = 480.0
+offset_bottom = 240.0
+color = Color(0, 0, 0, 1)
+metadata/_edit_lock_ = true
+
+[node name="CRTEffect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_lwg80")
+layout_mode = 0
+offset_left = 112.0
+offset_top = 16.0
+offset_right = 360.0
+offset_bottom = 224.0
+color = Color(1, 1, 1, 0)
+metadata/_edit_lock_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+speed_scale = 0.5
+libraries = {
+"": SubResource("AnimationLibrary_8vgk7")
+}
+
+[node name="Frame" type="StaticBody2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="CRTEffect" type="ColorRect" parent="Frame"]
+material = SubResource("ShaderMaterial_ye554")
+offset_left = 112.0
+offset_top = 16.0
+offset_right = 360.0
+offset_bottom = 224.0
+color = Color(1, 1, 1, 0)
+metadata/_edit_lock_ = true
+
+[node name="TextureRect" type="TextureRect" parent="Frame"]
+modulate = Color(0.941176, 1, 1, 1)
+self_modulate = Color(1.5, 1.5, 1.5, 1)
+texture_filter = 1
+material = SubResource("ShaderMaterial_sotp1")
+offset_left = 112.0
+offset_top = 16.0
+offset_right = 360.0
+offset_bottom = 224.0
+texture = ExtResource("2_7lvnl")
+metadata/_edit_lock_ = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Frame"]
+polygon = PackedVector2Array(360, 16, 120, 16, 120, 24, 360, 24)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Frame"]
+position = Vector2(136, -88.0291)
+rotation = 1.5708
+scale = Vector2(0.86387, 1)
+polygon = PackedVector2Array(360, 16, 120, 16, 120, 24, 360, 24)
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="Frame"]
+position = Vector2(0, 200)
+polygon = PackedVector2Array(360, 16, 120, 16, 120, 24, 360, 24)
+
+[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="Frame"]
+position = Vector2(376, -84.7075)
+rotation = 1.5708
+scale = Vector2(0.847431, 1)
+polygon = PackedVector2Array(360, 16, 120, 16, 120, 24, 360, 24)
+
+[node name="Player" parent="." instance=ExtResource("4_dkv2x")]
+position = Vector2(232, 160)
+
+[node name="Cover" type="ColorRect" parent="."]
+top_level = true
+layout_mode = 0
+offset_left = 112.0
+offset_top = 16.0
+offset_right = 360.0
+offset_bottom = 224.0
+color = Color(0, 0, 0, 1)
+metadata/_edit_lock_ = true
+
+[node name="KillRect" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+top_level = true
+layout_mode = 0
+offset_left = 112.0
+offset_top = 16.0
+offset_right = 360.0
+offset_bottom = 224.0
+color = Color(1, 0, 0, 1)
+metadata/_edit_lock_ = true

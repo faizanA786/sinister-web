@@ -1,9 +1,9 @@
-[gd_scene load_steps=43 format=3 uid="uid://7qbn6su8um8s"]
+[gd_scene load_steps=48 format=3 uid="uid://7qbn6su8um8s"]
 
 [ext_resource type="Script" path="res://scripts/CH1.gd" id="1_ag4vk"]
 [ext_resource type="AudioStream" uid="uid://cekolcxupprmi" path="res://assets/audio/typing.wav" id="2_s562v"]
 [ext_resource type="AudioStream" uid="uid://h5r7dwvmx08h" path="res://assets/audio/glitch.wav" id="3_yrcqa"]
-[ext_resource type="AudioStream" uid="uid://dskh8f53p1kyc" path="res://assets/audio/initialise.wav" id="4_a7yg6"]
+[ext_resource type="AudioStream" uid="uid://du5a2c7qgiwrf" path="res://assets/audio/vhs_startup.mp3" id="4_ck337"]
 [ext_resource type="AudioStream" uid="uid://c1athksnwqs0c" path="res://assets/audio/voice.mp3" id="5_kwufj"]
 [ext_resource type="Shader" path="res://scripts/Filter.gdshader" id="5_sy8us"]
 [ext_resource type="Texture2D" uid="uid://drqcj8d5bxhya" path="res://assets/sprites/bar.png" id="6_ygj84"]
@@ -28,7 +28,7 @@ volumetric_fog_density = 0.2167
 
 [sub_resource type="Animation" id="Animation_v2px7"]
 resource_name = "Blackout"
-length = 0.2
+length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -36,7 +36,7 @@ tracks/0/path = NodePath("TextureRect:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
+"times": PackedFloat32Array(0, 0.2, 0.4),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [true, false, true]
@@ -48,18 +48,93 @@ tracks/1/path = NodePath("CRTEffect:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
+"times": PackedFloat32Array(0, 0.2, 0.4),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [true, false, true]
 }
 
-[sub_resource type="Animation" id="Animation_h4trx"]
+[sub_resource type="Animation" id="Animation_2qn7b"]
+resource_name = "FadeInLabel_10"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect/10/VBoxContainer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_5kxoy"]
 resource_name = "FadeInLabel_11"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("TextureRect/11/Selection:modulate")
+tracks/0/path = NodePath("TextureRect/11/VBoxContainer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_qvw8g"]
+resource_name = "FadeInLabel_12"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect/12/VBoxContainer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_4fank"]
+resource_name = "FadeInLabel_13"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect/13/VBoxContainer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_yo5wa"]
+resource_name = "FadeInLabel_14"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect/14/VBoxContainer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_h4trx"]
+resource_name = "FadeInLabel_16"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect/16/Selection:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -114,7 +189,7 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_2qn7b"]
+[sub_resource type="Animation" id="Animation_7lihn"]
 resource_name = "FadeInLabel_9"
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -270,7 +345,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("TextureRect/9/VBoxContainer:modulate")
+tracks/6/path = NodePath("TextureRect/10/VBoxContainer:modulate")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -282,10 +357,70 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("TextureRect/11/Selection:modulate")
+tracks/7/path = NodePath("TextureRect/16/Selection:modulate")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("TextureRect/9/VBoxContainer:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("TextureRect/11/VBoxContainer:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("TextureRect/12/VBoxContainer:modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("TextureRect/13/VBoxContainer:modulate")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("TextureRect/14/VBoxContainer:modulate")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -295,11 +430,16 @@ tracks/7/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8vgk7"]
 _data = {
 "Blackout": SubResource("Animation_v2px7"),
-"FadeInLabel_11": SubResource("Animation_h4trx"),
+"FadeInLabel_10": SubResource("Animation_2qn7b"),
+"FadeInLabel_11": SubResource("Animation_5kxoy"),
+"FadeInLabel_12": SubResource("Animation_qvw8g"),
+"FadeInLabel_13": SubResource("Animation_4fank"),
+"FadeInLabel_14": SubResource("Animation_yo5wa"),
+"FadeInLabel_16": SubResource("Animation_h4trx"),
 "FadeInLabel_6": SubResource("Animation_qtd57"),
 "FadeInLabel_7": SubResource("Animation_etdxc"),
 "FadeInLabel_8": SubResource("Animation_iaq1i"),
-"FadeInLabel_9": SubResource("Animation_2qn7b"),
+"FadeInLabel_9": SubResource("Animation_7lihn"),
 "FadeToRed_FromWhite": SubResource("Animation_3de8u"),
 "FadeToWhite_FromRed": SubResource("Animation_1iuo2"),
 "FadeToWhite_FromYellow": SubResource("Animation_ujlka"),
@@ -382,11 +522,10 @@ pitch_scale = 1.2
 
 [node name="Glitch" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_yrcqa")
-volume_db = -8.0
-pitch_scale = 1.2
+volume_db = -2.0
 
 [node name="Initiate" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("4_a7yg6")
+stream = ExtResource("4_ck337")
 volume_db = 5.0
 pitch_scale = 0.95
 autoplay = true
@@ -431,6 +570,10 @@ offset_bottom = 224.0
 texture = ExtResource("6_ygj84")
 metadata/_edit_lock_ = true
 
+[node name="Timer" type="Timer" parent="TextureRect"]
+wait_time = 0.5
+one_shot = true
+
 [node name="0" parent="TextureRect" instance=ExtResource("7_xo8cc")]
 layout_mode = 0
 offset_left = 24.0
@@ -448,7 +591,7 @@ offset_top = 24.0
 offset_right = 224.0
 offset_bottom = 184.0
 theme_override_colors/font_color = Color(0.737255, 0.992157, 0.0784314, 1)
-text = ">> Getting system details . . ."
+text = "> Getting system details . . ."
 metadata/_edit_lock_ = true
 
 [node name="2" parent="TextureRect" instance=ExtResource("7_xo8cc")]
@@ -460,9 +603,9 @@ offset_bottom = 184.0
 theme_override_colors/font_color = Color(0.737255, 0.992157, 0.0784314, 1)
 text = "> Installing files . . .
 
->> Connecting to [ Dark Webvidz ] . . .
+> Connecting to [ Dark Webvidz ] . . .
 
->>> Connection established ! "
+> Connection established ! "
 metadata/_edit_lock_ = true
 
 [node name="3" parent="TextureRect" instance=ExtResource("8_47vxx")]
@@ -471,7 +614,7 @@ offset_left = 24.0
 offset_top = 24.0
 offset_right = 224.0
 offset_bottom = 184.0
-text = "Welcome!"
+text = "Welcome to SINISTER WEB."
 metadata/_edit_lock_ = true
 
 [node name="4" parent="TextureRect" instance=ExtResource("8_47vxx")]
@@ -480,7 +623,7 @@ offset_left = 24.0
 offset_top = 24.0
 offset_right = 224.0
 offset_bottom = 184.0
-text = "I am designed by [ !REDACTED ] to provide a safe environment to access content on the Deep Web."
+text = "Our systems have detected that this is your first time using this program."
 metadata/_edit_lock_ = true
 
 [node name="5" parent="TextureRect" instance=ExtResource("8_47vxx")]
@@ -489,7 +632,9 @@ offset_left = 16.0
 offset_top = 16.0
 offset_right = 232.0
 offset_bottom = 192.0
-text = "Before we begin, please answer a few questions to recieve the greatest experience from this program!"
+text = "As such, you are required to answer a few calibration questions before you can use the application.
+
+This will only take a few minutes."
 metadata/_edit_lock_ = true
 
 [node name="6" parent="TextureRect" instance=ExtResource("9_l781w")]
@@ -521,6 +666,7 @@ text = "1. Family / Relatives"
 flat = true
 
 [node name="Panel" type="Panel" parent="TextureRect/6/VBoxContainer/1"]
+modulate = Color(1, 1, 1, 0.470588)
 show_behind_parent = true
 layout_mode = 2
 offset_top = -5.0
@@ -575,6 +721,7 @@ text = "1. Morning"
 flat = true
 
 [node name="Panel" type="Panel" parent="TextureRect/7/VBoxContainer/1"]
+modulate = Color(1, 1, 1, 0.470588)
 show_behind_parent = true
 layout_mode = 0
 offset_top = -5.0
@@ -626,6 +773,7 @@ text = "1. Entertainment"
 flat = true
 
 [node name="Panel" type="Panel" parent="TextureRect/8/VBoxContainer/1"]
+modulate = Color(1, 1, 1, 0.470588)
 show_behind_parent = true
 layout_mode = 0
 offset_top = -5.0
@@ -656,7 +804,7 @@ offset_top = 24.0
 offset_right = 224.0
 offset_bottom = 81.0
 text = "<4>
-Do you have any experience in combat?"
+What is your gender?"
 metadata/_edit_lock_ = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/9"]
@@ -673,14 +821,16 @@ layout_mode = 2
 theme_override_colors/font_hover_color = Color(0.737255, 0.992157, 0.0784314, 1)
 theme_override_fonts/font = ExtResource("10_bh016")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_a544p")
-text = "1. Yes"
+text = "1. Male"
 flat = true
 
 [node name="Panel" type="Panel" parent="TextureRect/9/VBoxContainer/1"]
+modulate = Color(1, 1, 1, 0.470588)
 show_behind_parent = true
 layout_mode = 0
+offset_left = 32.0
 offset_top = -5.0
-offset_right = 200.0
+offset_right = 168.0
 offset_bottom = 88.0
 mouse_filter = 2
 
@@ -689,7 +839,7 @@ layout_mode = 2
 theme_override_colors/font_hover_color = Color(0.737255, 0.992157, 0.0784314, 1)
 theme_override_fonts/font = ExtResource("10_bh016")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_tnfkn")
-text = "2. Some experience"
+text = "2. Female"
 flat = true
 
 [node name="3" type="Button" parent="TextureRect/9/VBoxContainer"]
@@ -697,10 +847,272 @@ layout_mode = 2
 theme_override_colors/font_hover_color = Color(0.737255, 0.992157, 0.0784314, 1)
 theme_override_fonts/font = ExtResource("10_bh016")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_dac2v")
+text = "3. Other"
+flat = true
+
+[node name="10" parent="TextureRect" instance=ExtResource("9_l781w")]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 24.0
+offset_right = 224.0
+offset_bottom = 81.0
+text = "<5>
+Do you have any experience in combat?"
+metadata/_edit_lock_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/10"]
+visible = false
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_top = 80.0
+offset_right = 200.0
+offset_bottom = 160.0
+theme_override_constants/separation = 5
+
+[node name="1" type="Button" parent="TextureRect/10/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0.737255, 0.992157, 0.0784314, 1)
+theme_override_fonts/font = ExtResource("10_bh016")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_a544p")
+text = "1. Yes"
+flat = true
+
+[node name="Panel" type="Panel" parent="TextureRect/10/VBoxContainer/1"]
+modulate = Color(1, 1, 1, 0.470588)
+show_behind_parent = true
+layout_mode = 0
+offset_top = -5.0
+offset_right = 200.0
+offset_bottom = 88.0
+mouse_filter = 2
+
+[node name="2" type="Button" parent="TextureRect/10/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0.737255, 0.992157, 0.0784314, 1)
+theme_override_fonts/font = ExtResource("10_bh016")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_tnfkn")
+text = "2. Some experience"
+flat = true
+
+[node name="3" type="Button" parent="TextureRect/10/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0.737255, 0.992157, 0.0784314, 1)
+theme_override_fonts/font = ExtResource("10_bh016")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_dac2v")
 text = "3. None"
 flat = true
 
-[node name="10" parent="TextureRect" instance=ExtResource("7_xo8cc")]
+[node name="11" parent="TextureRect" instance=ExtResource("9_l781w")]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 24.0
+offset_right = 224.0
+offset_bottom = 81.0
+text = "<6>
+How are you feeling right now?"
+metadata/_edit_lock_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/11"]
+visible = false
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_top = 80.0
+offset_right = 200.0
+offset_bottom = 160.0
+theme_override_constants/separation = 5
+
+[node name="1" type="Button" parent="TextureRect/11/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0.737255, 0.992157, 0.0784314, 1)
+theme_override_fonts/font = ExtResource("10_bh016")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_a544p")
+text = "1. Neutral"
+flat = true
+
+[node name="Panel" type="Panel" parent="TextureRect/11/VBoxContainer/1"]
+modulate = Color(1, 1, 1, 0.470588)
+show_behind_parent = true
+layout_mode = 0
+offset_left = 16.0
+offset_top = -5.0
+offset_right = 184.0
+offset_bottom = 88.0
+mouse_filter = 2
+
+[node name="2" type="Button" parent="TextureRect/11/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0.737255, 0.992157, 0.0784314, 1)
+theme_override_fonts/font = ExtResource("10_bh016")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_tnfkn")
+text = "2. Happy / Sad"
+flat = true
+
+[node name="3" type="Button" parent="TextureRect/11/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0.737255, 0.992157, 0.0784314, 1)
+theme_override_fonts/font = ExtResource("10_bh016")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_dac2v")
+text = "3. Angry"
+flat = true
+
+[node name="12" parent="TextureRect" instance=ExtResource("9_l781w")]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 16.0
+offset_right = 224.0
+offset_bottom = 73.0
+text = "<7>
+Have you previously worked for law enforcement?"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/12"]
+visible = false
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_top = 88.0
+offset_right = 200.0
+offset_bottom = 170.0
+theme_override_constants/separation = 5
+metadata/_edit_group_ = true
+
+[node name="1" type="Button" parent="TextureRect/12/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0.737255, 0.992157, 0.0784314, 1)
+theme_override_fonts/font = ExtResource("10_bh016")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_a544p")
+text = "1. Yes, I have"
+flat = true
+
+[node name="Panel" type="Panel" parent="TextureRect/12/VBoxContainer/1"]
+modulate = Color(1, 1, 1, 0.470588)
+show_behind_parent = true
+layout_mode = 0
+offset_left = 32.0
+offset_top = -5.0
+offset_right = 168.0
+offset_bottom = 88.0
+mouse_filter = 2
+
+[node name="2" type="Button" parent="TextureRect/12/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0.737255, 0.992157, 0.0784314, 1)
+theme_override_fonts/font = ExtResource("10_bh016")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_tnfkn")
+text = "2. No"
+flat = true
+
+[node name="3" type="Button" parent="TextureRect/12/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0.737255, 0.992157, 0.0784314, 1)
+theme_override_fonts/font = ExtResource("10_bh016")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_dac2v")
+text = "3. I still do"
+flat = true
+
+[node name="13" parent="TextureRect" instance=ExtResource("9_l781w")]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 24.0
+offset_right = 224.0
+offset_bottom = 81.0
+text = "<8>
+Are you afraid of dying?"
+metadata/_edit_lock_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/13"]
+visible = false
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_top = 80.0
+offset_right = 200.0
+offset_bottom = 160.0
+theme_override_constants/separation = 5
+
+[node name="1" type="Button" parent="TextureRect/13/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0.737255, 0.992157, 0.0784314, 1)
+theme_override_fonts/font = ExtResource("10_bh016")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_a544p")
+text = "1. I am scared of death"
+flat = true
+
+[node name="Panel" type="Panel" parent="TextureRect/13/VBoxContainer/1"]
+modulate = Color(1, 1, 1, 0.470588)
+show_behind_parent = true
+layout_mode = 0
+offset_top = -5.0
+offset_right = 200.0
+offset_bottom = 88.0
+mouse_filter = 2
+
+[node name="2" type="Button" parent="TextureRect/13/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0.737255, 0.992157, 0.0784314, 1)
+theme_override_fonts/font = ExtResource("10_bh016")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_tnfkn")
+text = "2. No, I am not afraid"
+flat = true
+
+[node name="3" type="Button" parent="TextureRect/13/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0.737255, 0.992157, 0.0784314, 1)
+theme_override_fonts/font = ExtResource("10_bh016")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_dac2v")
+text = "3. Maybe"
+flat = true
+
+[node name="14" parent="TextureRect" instance=ExtResource("9_l781w")]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 24.0
+offset_right = 224.0
+offset_bottom = 81.0
+text = "<9>
+Did you lie to me during these questions?"
+metadata/_edit_lock_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/14"]
+visible = false
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_top = 80.0
+offset_right = 200.0
+offset_bottom = 160.0
+theme_override_constants/separation = 5
+
+[node name="1" type="Button" parent="TextureRect/14/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0.737255, 0.992157, 0.0784314, 1)
+theme_override_fonts/font = ExtResource("10_bh016")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_a544p")
+text = "1. Yes, I lied"
+flat = true
+
+[node name="Panel" type="Panel" parent="TextureRect/14/VBoxContainer/1"]
+modulate = Color(1, 1, 1, 0.470588)
+show_behind_parent = true
+layout_mode = 0
+offset_top = -5.0
+offset_right = 200.0
+offset_bottom = 88.0
+mouse_filter = 2
+
+[node name="2" type="Button" parent="TextureRect/14/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0.737255, 0.992157, 0.0784314, 1)
+theme_override_fonts/font = ExtResource("10_bh016")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_tnfkn")
+text = "2. I answered honestly"
+flat = true
+
+[node name="3" type="Button" parent="TextureRect/14/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0.737255, 0.992157, 0.0784314, 1)
+theme_override_fonts/font = ExtResource("10_bh016")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_dac2v")
+text = "3. Perhaps"
+flat = true
+
+[node name="15" parent="TextureRect" instance=ExtResource("7_xo8cc")]
 layout_mode = 0
 offset_left = 24.0
 offset_top = 24.0
@@ -712,7 +1124,7 @@ Disclaimer:
 We are not responsible for your safety !"
 metadata/_edit_lock_ = true
 
-[node name="11" parent="TextureRect" instance=ExtResource("9_l781w")]
+[node name="16" parent="TextureRect" instance=ExtResource("9_l781w")]
 layout_mode = 0
 offset_left = 16.0
 offset_top = 24.0
@@ -723,7 +1135,7 @@ text = "You will now be connected to the Deep Web, please do not interact with s
 Do you want to begin?"
 metadata/_edit_lock_ = true
 
-[node name="Selection" type="HBoxContainer" parent="TextureRect/11"]
+[node name="Selection" type="HBoxContainer" parent="TextureRect/16"]
 visible = false
 modulate = Color(1, 1, 1, 0)
 layout_mode = 0
@@ -733,7 +1145,7 @@ offset_right = 208.0
 offset_bottom = 168.0
 metadata/_edit_group_ = true
 
-[node name="Yes" type="Button" parent="TextureRect/11/Selection"]
+[node name="Yes" type="Button" parent="TextureRect/16/Selection"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/font_hover_color = Color(0.941176, 1, 0, 1)
@@ -743,14 +1155,15 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_nlujt")
 text = "> Yes <"
 flat = true
 
-[node name="Panel" type="Panel" parent="TextureRect/11/Selection/Yes"]
+[node name="Panel" type="Panel" parent="TextureRect/16/Selection/Yes"]
+modulate = Color(1, 1, 1, 0.470588)
 show_behind_parent = true
 layout_mode = 0
 offset_right = 200.0
 offset_bottom = 32.0
 mouse_filter = 2
 
-[node name="No" type="Button" parent="TextureRect/11/Selection"]
+[node name="No" type="Button" parent="TextureRect/16/Selection"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/font_hover_color = Color(0.941176, 1, 0, 1)
@@ -759,7 +1172,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_o8yo3")
 text = "> No <"
 flat = true
 
-[node name="12" parent="TextureRect" instance=ExtResource("7_xo8cc")]
+[node name="17" parent="TextureRect" instance=ExtResource("7_xo8cc")]
 layout_mode = 0
 offset_left = 16.0
 offset_top = 16.0
@@ -768,12 +1181,12 @@ offset_bottom = 192.0
 theme_override_colors/font_color = Color(0.737255, 0.992157, 0.0784314, 1)
 text = "> Finding a video. . .
 
->> Connecting to \"Anonymous7931\"s livestream . . .
+> Connecting to \"Anonymous7931\"s livestream . . .
 
->>> Connected !  "
+> Connected !  "
 metadata/_edit_lock_ = true
 
-[node name="13" parent="TextureRect" instance=ExtResource("7_xo8cc")]
+[node name="18" parent="TextureRect" instance=ExtResource("7_xo8cc")]
 layout_mode = 0
 offset_left = 16.0
 offset_top = 16.0
@@ -782,6 +1195,7 @@ offset_bottom = 192.0
 theme_override_colors/font_color = Color(0.737255, 0.992157, 0.0784314, 1)
 metadata/_edit_lock_ = true
 
+[connection signal="timeout" from="TextureRect/Timer" to="." method="_on_timer_timeout"]
 [connection signal="button_up" from="TextureRect/6/VBoxContainer/1" to="." method="_on__button_up"]
 [connection signal="button_up" from="TextureRect/6/VBoxContainer/2" to="." method="_on__button_up"]
 [connection signal="button_up" from="TextureRect/6/VBoxContainer/3" to="." method="_on__button_up"]
@@ -794,5 +1208,20 @@ metadata/_edit_lock_ = true
 [connection signal="button_up" from="TextureRect/9/VBoxContainer/1" to="." method="_on__button_up"]
 [connection signal="button_up" from="TextureRect/9/VBoxContainer/2" to="." method="_on__button_up"]
 [connection signal="button_up" from="TextureRect/9/VBoxContainer/3" to="." method="_on__button_up"]
-[connection signal="button_up" from="TextureRect/11/Selection/Yes" to="." method="_on_yes_button_up"]
-[connection signal="button_up" from="TextureRect/11/Selection/No" to="." method="_on_no_button_up"]
+[connection signal="button_up" from="TextureRect/10/VBoxContainer/1" to="." method="_on__button_up"]
+[connection signal="button_up" from="TextureRect/10/VBoxContainer/2" to="." method="_on__button_up"]
+[connection signal="button_up" from="TextureRect/10/VBoxContainer/3" to="." method="_on__button_up"]
+[connection signal="button_up" from="TextureRect/11/VBoxContainer/1" to="." method="_on__button_up"]
+[connection signal="button_up" from="TextureRect/11/VBoxContainer/2" to="." method="_on__button_up"]
+[connection signal="button_up" from="TextureRect/11/VBoxContainer/3" to="." method="_on__button_up"]
+[connection signal="button_up" from="TextureRect/12/VBoxContainer/1" to="." method="_on__button_up"]
+[connection signal="button_up" from="TextureRect/12/VBoxContainer/2" to="." method="_on__button_up"]
+[connection signal="button_up" from="TextureRect/12/VBoxContainer/3" to="." method="_on__button_up"]
+[connection signal="button_up" from="TextureRect/13/VBoxContainer/1" to="." method="_on__button_up"]
+[connection signal="button_up" from="TextureRect/13/VBoxContainer/2" to="." method="_on__button_up"]
+[connection signal="button_up" from="TextureRect/13/VBoxContainer/3" to="." method="_on__button_up"]
+[connection signal="button_up" from="TextureRect/14/VBoxContainer/1" to="." method="_on__button_up"]
+[connection signal="button_up" from="TextureRect/14/VBoxContainer/2" to="." method="_on__button_up"]
+[connection signal="button_up" from="TextureRect/14/VBoxContainer/3" to="." method="_on__button_up"]
+[connection signal="button_up" from="TextureRect/16/Selection/Yes" to="." method="_on_yes_button_up"]
+[connection signal="button_up" from="TextureRect/16/Selection/No" to="." method="_on_no_button_up"]

@@ -1,10 +1,12 @@
-[gd_scene load_steps=13 format=3 uid="uid://bw2lapayxxkto"]
+[gd_scene load_steps=19 format=3 uid="uid://bw2lapayxxkto"]
 
 [ext_resource type="Script" path="res://scripts/Menu.gd" id="1_n0of1"]
 [ext_resource type="AudioStream" uid="uid://cekolcxupprmi" path="res://assets/audio/typing.wav" id="1_pojex"]
 [ext_resource type="Shader" path="res://scripts/Filter.gdshader" id="3_crcex"]
+[ext_resource type="AudioStream" uid="uid://8thtkhqf0vnx" path="res://assets/audio/wind.wav" id="3_r1ouu"]
 [ext_resource type="FontFile" uid="uid://bkhfisgnnj5x4" path="res://assets/Pixel.ttf" id="4_phh37"]
 [ext_resource type="Texture2D" uid="uid://drqcj8d5bxhya" path="res://assets/sprites/bar.png" id="5_tn78x"]
+[ext_resource type="Script" path="res://scripts/Chat.gd" id="6_mqqt5"]
 
 [sub_resource type="Environment" id="Environment_2wp1a"]
 background_mode = 3
@@ -18,20 +20,34 @@ glow_hdr_threshold = 0.15
 fog_enabled = true
 volumetric_fog_density = 0.2167
 
-[sub_resource type="Animation" id="Animation_p1wsw"]
-resource_name = "FadeTo_CH1"
-length = 0.55
+[sub_resource type="Animation" id="Animation_6ghpc"]
+resource_name = "FadeInDisclaimer"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("VBoxContainer:modulate")
+tracks/0/path = NodePath("Disclaimer:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.784314), Color(1, 1, 1, 0.588235), Color(1, 1, 1, 0.392157), Color(1, 1, 1, 0.196078), Color(1, 1, 1, 0)]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_wk08p"]
+resource_name = "FadeInMenu"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.941176, 1, 1, 0), Color(0.941176, 1, 1, 1)]
 }
 tracks/1/type = "method"
 tracks/1/imported = false
@@ -40,6 +56,53 @@ tracks/1/path = NodePath(".")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"delete_disclaimer"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_p8wd2"]
+resource_name = "FadeOutCredits"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Credits:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"disclaimer"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_p1wsw"]
+resource_name = "FadeTo_CH1"
+length = 0.55
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
 "times": PackedFloat32Array(0.5),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -47,13 +110,37 @@ tracks/1/keys = {
 "method": &"to_CH1"
 }]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureRect/Label:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TextureRect/Play:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_4s45l"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("VBoxContainer:modulate")
+tracks/0/path = NodePath("TextureRect/Label:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -62,9 +149,60 @@ tracks/0/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureRect/Play:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TextureRect:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.941176, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Disclaimer:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Credits:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ox35v"]
 _data = {
+"FadeInDisclaimer": SubResource("Animation_6ghpc"),
+"FadeInMenu": SubResource("Animation_wk08p"),
+"FadeOutCredits": SubResource("Animation_p8wd2"),
 "FadeTo_CH1": SubResource("Animation_p1wsw"),
 "RESET": SubResource("Animation_4s45l")
 }
@@ -97,6 +235,8 @@ shader_parameter/vignette_opacity = 0.5
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_a108s"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3bl1l"]
+
 [node name="Menu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -105,18 +245,25 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_n0of1")
+metadata/_edit_lock_ = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_2wp1a")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+speed_scale = 0.5
 libraries = {
 "": SubResource("AnimationLibrary_ox35v")
 }
 
 [node name="Type" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("1_pojex")
-volume_db = 5.0
+volume_db = 10.0
+pitch_scale = 0.4
+
+[node name="Wind" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_r1ouu")
+volume_db = -5.0
 pitch_scale = 0.5
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -128,6 +275,7 @@ color = Color(0, 0, 0, 1)
 metadata/_edit_lock_ = true
 
 [node name="CRTEffect" type="ColorRect" parent="."]
+visible = false
 material = SubResource("ShaderMaterial_40sol")
 layout_mode = 0
 offset_left = 112.0
@@ -138,7 +286,7 @@ color = Color(0.34902, 1, 1, 0.0980392)
 metadata/_edit_lock_ = true
 
 [node name="TextureRect" type="TextureRect" parent="."]
-modulate = Color(0.941176, 1, 1, 1)
+modulate = Color(0.941176, 1, 1, 0)
 self_modulate = Color(1.5, 1.5, 1.5, 1)
 texture_filter = 1
 material = SubResource("ShaderMaterial_a108s")
@@ -150,40 +298,142 @@ offset_bottom = 224.0
 texture = ExtResource("5_tn78x")
 metadata/_edit_lock_ = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="Play" type="Button" parent="TextureRect"]
+texture_filter = 1
+layout_mode = 2
+offset_left = 72.0
+offset_top = 144.0
+offset_right = 168.0
+offset_bottom = 168.0
+size_flags_vertical = 3
+theme_override_colors/font_hover_color = Color(0.737255, 0.992157, 0.0784314, 1)
+theme_override_fonts/font = ExtResource("4_phh37")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/focus = SubResource("StyleBoxEmpty_3bl1l")
+text = "[ Launch ]"
+flat = true
+
+[node name="Label" type="Label" parent="TextureRect"]
+texture_filter = 1
 layout_mode = 0
-offset_left = 160.0
-offset_top = 56.0
-offset_right = 312.0
-offset_bottom = 184.0
-theme_override_constants/separation = 10
+offset_left = 24.0
+offset_top = 24.0
+offset_right = 224.0
+offset_bottom = 120.0
+theme_override_fonts/font = ExtResource("4_phh37")
+text = "Username : Guest351
+Friends online : 0
+
+Users online : 792"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="Disclaimer" type="Control" parent="."]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 0
+offset_right = 480.0
+offset_bottom = 240.0
+metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 
-[node name="Play" type="Button" parent="VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_colors/font_hover_color = Color(0.737255, 0.992157, 0.0784314, 1)
+[node name="Label" type="Label" parent="Disclaimer"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 168.0
+offset_top = 32.0
+offset_right = -160.0
+offset_bottom = -168.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_phh37")
-theme_override_font_sizes/font_size = 16
-text = "Start"
-flat = true
+theme_override_font_sizes/font_size = 32
+text = "WARNING:
+"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Options" type="Button" parent="VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_colors/font_hover_color = Color(0.737255, 0.992157, 0.0784314, 1)
+[node name="Label2" type="Label" parent="Disclaimer"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 96.0
+offset_top = 64.0
+offset_right = -96.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_fonts/font = ExtResource("4_phh37")
-theme_override_font_sizes/font_size = 16
-text = "Options"
-flat = true
+text = "THIS GAME CONTAINS DARK AND DISTURBING THEMES
 
-[node name="Exit" type="Button" parent="VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_colors/font_hover_color = Color(0.737255, 0.992157, 0.0784314, 1)
+VIEWER DISCRETION IS ADVISED"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Timer" type="Timer" parent="Disclaimer"]
+wait_time = 4.0
+one_shot = true
+
+[node name="Credits" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Credits"]
+self_modulate = Color(1.5, 1.5, 1.5, 1)
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 88.0
+offset_top = 88.0
+offset_right = -88.0
+offset_bottom = -101.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("4_phh37")
-theme_override_font_sizes/font_size = 16
-text = "Exit"
-flat = true
+theme_override_font_sizes/font_size = 40
+text = "CIWA STUDIOS"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+visible_characters = 0
+visible_ratio = 0.0
+script = ExtResource("6_mqqt5")
 
-[connection signal="button_up" from="VBoxContainer/Play" to="." method="_on_play_button_up"]
+[node name="Type" type="AudioStreamPlayer2D" parent="Credits/Label"]
+stream = ExtResource("1_pojex")
+
+[node name="Delete" type="AudioStreamPlayer2D" parent="Credits/Label"]
+stream = ExtResource("1_pojex")
+pitch_scale = 1.5
+
+[node name="Death" type="Timer" parent="Credits/Label"]
+wait_time = 4.0
+one_shot = true
+
+[node name="Expand" type="Timer" parent="Credits/Label"]
+wait_time = 0.1
+
+[node name="Shrink" type="Timer" parent="Credits/Label"]
+wait_time = 10.0
+
+[connection signal="finished" from="Wind" to="." method="_on_wind_finished"]
+[connection signal="button_up" from="TextureRect/Play" to="." method="_on_play_button_up"]
+[connection signal="timeout" from="Disclaimer/Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Credits/Label/Death" to="." method="_on_death_timeout"]
+[connection signal="timeout" from="Credits/Label/Death" to="Credits/Label" method="_on_death_timeout" flags=18]
+[connection signal="timeout" from="Credits/Label/Expand" to="Credits/Label" method="_on_expand_timeout" flags=18]
+[connection signal="timeout" from="Credits/Label/Shrink" to="Credits/Label" method="_on_shrink_timeout" flags=18]

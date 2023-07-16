@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://ch10rx601kwcl"]
+[gd_scene load_steps=28 format=3 uid="uid://ch10rx601kwcl"]
 
 [ext_resource type="Script" path="res://scripts/CH3.gd" id="1_1pg3u"]
 [ext_resource type="AudioStream" uid="uid://gry643k0xc2s" path="res://assets/audio/stab.wav" id="3_bpf0w"]
@@ -7,6 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://bd8dnysy7nl1w" path="res://assets/audio/glass_break.mp3" id="4_akayv"]
 [ext_resource type="Texture2D" uid="uid://drqcj8d5bxhya" path="res://assets/sprites/bar.png" id="4_kuwnh"]
 [ext_resource type="PackedScene" uid="uid://breke1axr8brc" path="res://scenes/ForceText.tscn" id="5_27d7y"]
+[ext_resource type="AudioStream" uid="uid://8thtkhqf0vnx" path="res://assets/audio/wind.wav" id="5_hnr51"]
 [ext_resource type="PackedScene" uid="uid://b7r4twa50a1an" path="res://scenes/Text.tscn" id="6_7q5d1"]
 [ext_resource type="PackedScene" uid="uid://r2bbs45noqfh" path="res://scenes/SelectionText.tscn" id="6_qiyd6"]
 [ext_resource type="FontFile" uid="uid://bkhfisgnnj5x4" path="res://assets/Pixel.ttf" id="8_no7hi"]
@@ -25,7 +26,6 @@ volumetric_fog_density = 0.2167
 
 [sub_resource type="Animation" id="Animation_5w5kg"]
 resource_name = "FadeInLabel_4"
-length = 0.6
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -33,7 +33,7 @@ tracks/0/path = NodePath("TextureRect/4/VBoxContainer:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.6),
+"times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
@@ -41,7 +41,6 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_7mvmk"]
 resource_name = "FadeInLabel_5"
-length = 0.6
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -49,7 +48,7 @@ tracks/0/path = NodePath("TextureRect/5/VBoxContainer:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.6),
+"times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
@@ -57,7 +56,6 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_yw0s1"]
 resource_name = "FadeInLabel_6"
-length = 0.6
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -65,26 +63,25 @@ tracks/0/path = NodePath("TextureRect/6/VBoxContainer:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.6),
+"times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_quslh"]
-resource_name = "FadeInLabel_8"
-length = 0.6
+[sub_resource type="Animation" id="Animation_br808"]
+resource_name = "FadeToYellow_FromWhite"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("TextureRect/8/HBoxContainer:modulate")
+tracks/0/path = NodePath("TextureRect:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.6),
+"times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+"values": [Color(1, 0.996078, 0.992157, 1), Color(0.737255, 0.992157, 0.0784314, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_y84jf"]
@@ -156,22 +153,134 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("TextureRect/8/HBoxContainer:modulate")
+tracks/4/path = NodePath("TextureRect:modulate")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
+"values": [Color(1, 0.996078, 0.992157, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("TextureRect/7/VBoxContainer:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
 "values": [Color(1, 1, 1, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("TextureRect/8/VBoxContainer:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("TextureRect/9/VBoxContainer:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("TextureRect/11/HBoxContainer:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_kr6dm"]
+resource_name = "FadeInLabel_7"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect/7/VBoxContainer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_qevgw"]
+resource_name = "FadeInLabel_8"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect/8/VBoxContainer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_068k0"]
+resource_name = "FadeInLabel_9"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect/9/VBoxContainer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_quslh"]
+resource_name = "FadeInLabel_11"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect/11/HBoxContainer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5lmh3"]
 _data = {
+"FadeInLabel_11": SubResource("Animation_quslh"),
 "FadeInLabel_4": SubResource("Animation_5w5kg"),
 "FadeInLabel_5": SubResource("Animation_7mvmk"),
 "FadeInLabel_6": SubResource("Animation_yw0s1"),
-"FadeInLabel_8": SubResource("Animation_quslh"),
+"FadeInLabel_7": SubResource("Animation_kr6dm"),
+"FadeInLabel_8": SubResource("Animation_qevgw"),
+"FadeInLabel_9": SubResource("Animation_068k0"),
+"FadeToYellow_FromWhite": SubResource("Animation_br808"),
 "Kill": SubResource("Animation_y84jf"),
 "RESET": SubResource("Animation_mha46")
 }
@@ -227,14 +336,18 @@ pitch_scale = 1.2
 [node name="Knock" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_sex6f")
 volume_db = -5.0
-pitch_scale = 0.8
 
 [node name="Glass" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_akayv")
 volume_db = -15.0
 
+[node name="Wind" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_hnr51")
+volume_db = 10.0
+pitch_scale = 0.3
+autoplay = true
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-speed_scale = 0.8
 libraries = {
 "": SubResource("AnimationLibrary_5lmh3")
 }
@@ -270,6 +383,10 @@ offset_bottom = 224.0
 texture = ExtResource("4_kuwnh")
 metadata/_edit_lock_ = true
 
+[node name="Timer" type="Timer" parent="TextureRect"]
+wait_time = 0.5
+one_shot = true
+
 [node name="0" parent="TextureRect" instance=ExtResource("5_27d7y")]
 layout_mode = 0
 offset_left = 24.0
@@ -294,7 +411,7 @@ offset_left = 24.0
 offset_top = 24.0
 offset_right = 224.0
 offset_bottom = 184.0
-text = "Your feedback allows the algorithm to find videos better suited for your taste. "
+text = "Your feedback allows the algorithm to find videos better suited for you."
 metadata/_edit_lock_ = true
 
 [node name="3" parent="TextureRect" instance=ExtResource("6_7q5d1")]
@@ -309,9 +426,9 @@ metadata/_edit_lock_ = true
 [node name="4" parent="TextureRect" instance=ExtResource("6_qiyd6")]
 layout_mode = 0
 offset_left = 24.0
-offset_top = 8.0
+offset_top = 16.0
 offset_right = 224.0
-offset_bottom = 103.0
+offset_bottom = 111.0
 text = "<1>
 Which word best describes \"Anonymous7931\"s content?"
 metadata/_edit_lock_ = true
@@ -320,9 +437,9 @@ metadata/_edit_lock_ = true
 visible = false
 modulate = Color(1, 1, 1, 0)
 layout_mode = 0
-offset_top = 104.0
+offset_top = 96.0
 offset_right = 200.0
-offset_bottom = 184.0
+offset_bottom = 176.0
 metadata/_edit_group_ = true
 
 [node name="1" type="Button" parent="TextureRect/4/VBoxContainer"]
@@ -335,6 +452,7 @@ text = "1. Entertaining"
 flat = true
 
 [node name="Panel" type="Panel" parent="TextureRect/4/VBoxContainer/1"]
+modulate = Color(1, 1, 1, 0.784314)
 show_behind_parent = true
 texture_filter = 1
 layout_mode = 0
@@ -390,6 +508,7 @@ text = "1. Yes"
 flat = true
 
 [node name="Panel" type="Panel" parent="TextureRect/5/VBoxContainer/1"]
+modulate = Color(1, 1, 1, 0.784314)
 show_behind_parent = true
 texture_filter = 1
 layout_mode = 0
@@ -445,6 +564,7 @@ text = "1. Few other people"
 flat = true
 
 [node name="Panel" type="Panel" parent="TextureRect/6/VBoxContainer/1"]
+modulate = Color(1, 1, 1, 0.784314)
 show_behind_parent = true
 texture_filter = 1
 layout_mode = 0
@@ -471,7 +591,175 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_eopph")
 text = "3. No, I was by myself"
 flat = true
 
-[node name="7" parent="TextureRect" instance=ExtResource("5_27d7y")]
+[node name="7" parent="TextureRect" instance=ExtResource("6_qiyd6")]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 16.0
+offset_right = 224.0
+offset_bottom = 103.0
+text = "<4>
+How did  \"Anonymous7931\"s livestream make you feel?"
+metadata/_edit_lock_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/7"]
+visible = false
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_top = 96.0
+offset_right = 200.0
+offset_bottom = 176.0
+metadata/_edit_group_ = true
+
+[node name="1" type="Button" parent="TextureRect/7/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0.737255, 0.992157, 0.0784314, 1)
+theme_override_fonts/font = ExtResource("8_no7hi")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_eopph")
+text = "1. Sad"
+flat = true
+
+[node name="Panel" type="Panel" parent="TextureRect/7/VBoxContainer/1"]
+modulate = Color(1, 1, 1, 0.784314)
+show_behind_parent = true
+texture_filter = 1
+layout_mode = 0
+offset_left = 24.0
+offset_right = 184.0
+offset_bottom = 80.0
+mouse_filter = 2
+
+[node name="2" type="Button" parent="TextureRect/7/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0.737255, 0.992157, 0.0784314, 1)
+theme_override_fonts/font = ExtResource("8_no7hi")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_eopph")
+text = "2. Disgusted"
+flat = true
+
+[node name="3" type="Button" parent="TextureRect/7/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0.737255, 0.992157, 0.0784314, 1)
+theme_override_fonts/font = ExtResource("8_no7hi")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_eopph")
+text = "3. Happy"
+flat = true
+
+[node name="8" parent="TextureRect" instance=ExtResource("6_qiyd6")]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 16.0
+offset_right = 224.0
+offset_bottom = 103.0
+text = "<5>
+Did you know those people in the livestream?"
+metadata/_edit_lock_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/8"]
+visible = false
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_top = 96.0
+offset_right = 200.0
+offset_bottom = 176.0
+metadata/_edit_group_ = true
+
+[node name="1" type="Button" parent="TextureRect/8/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0.737255, 0.992157, 0.0784314, 1)
+theme_override_fonts/font = ExtResource("8_no7hi")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_eopph")
+text = "1. You are"
+flat = true
+
+[node name="Panel" type="Panel" parent="TextureRect/8/VBoxContainer/1"]
+modulate = Color(1, 1, 1, 0.784314)
+show_behind_parent = true
+texture_filter = 1
+layout_mode = 0
+offset_left = 24.0
+offset_right = 184.0
+offset_bottom = 80.0
+mouse_filter = 2
+
+[node name="2" type="Button" parent="TextureRect/8/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0.737255, 0.992157, 0.0784314, 1)
+theme_override_fonts/font = ExtResource("8_no7hi")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_eopph")
+text = "2. Going to"
+flat = true
+
+[node name="3" type="Button" parent="TextureRect/8/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0.737255, 0.992157, 0.0784314, 1)
+theme_override_fonts/font = ExtResource("8_no7hi")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_eopph")
+text = "3. Die tonight"
+flat = true
+
+[node name="9" parent="TextureRect" instance=ExtResource("6_qiyd6")]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 16.0
+offset_right = 224.0
+offset_bottom = 103.0
+text = "<6>
+You have recieved a friend request from \"_£sAD_sATaN\""
+metadata/_edit_lock_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/9"]
+visible = false
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_top = 96.0
+offset_right = 200.0
+offset_bottom = 176.0
+metadata/_edit_group_ = true
+
+[node name="1" type="Button" parent="TextureRect/9/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0.737255, 0.992157, 0.0784314, 1)
+theme_override_fonts/font = ExtResource("8_no7hi")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_eopph")
+text = "1. Accept"
+flat = true
+
+[node name="Panel" type="Panel" parent="TextureRect/9/VBoxContainer/1"]
+modulate = Color(1, 1, 1, 0.784314)
+show_behind_parent = true
+texture_filter = 1
+layout_mode = 0
+offset_left = 24.0
+offset_right = 184.0
+offset_bottom = 80.0
+mouse_filter = 2
+
+[node name="2" type="Button" parent="TextureRect/9/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0.737255, 0.992157, 0.0784314, 1)
+theme_override_fonts/font = ExtResource("8_no7hi")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_eopph")
+text = "2. Accept"
+flat = true
+
+[node name="3" type="Button" parent="TextureRect/9/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0.737255, 0.992157, 0.0784314, 1)
+theme_override_fonts/font = ExtResource("8_no7hi")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_eopph")
+text = "3. Fuck you"
+flat = true
+
+[node name="10" parent="TextureRect" instance=ExtResource("5_27d7y")]
 layout_mode = 0
 offset_left = 24.0
 offset_top = 24.0
@@ -480,25 +768,27 @@ offset_bottom = 184.0
 text = "Thank you for your feedback."
 metadata/_edit_lock_ = true
 
-[node name="8" parent="TextureRect" instance=ExtResource("6_qiyd6")]
+[node name="11" parent="TextureRect" instance=ExtResource("6_qiyd6")]
 layout_mode = 0
 offset_left = 24.0
 offset_top = 16.0
 offset_right = 224.0
 offset_bottom = 103.0
-text = "Did you want to watch another video?"
+text = "You have recieved an invitation by \"_£sAD_sATaN\" to watch their livestream.
+
+Accept their invite?"
 metadata/_edit_lock_ = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="TextureRect/8"]
+[node name="HBoxContainer" type="HBoxContainer" parent="TextureRect/11"]
 visible = false
 modulate = Color(1, 1, 1, 0)
 layout_mode = 0
-offset_top = 88.0
+offset_top = 136.0
 offset_right = 200.0
-offset_bottom = 128.0
+offset_bottom = 176.0
 metadata/_edit_group_ = true
 
-[node name="Yes" type="Button" parent="TextureRect/8/HBoxContainer"]
+[node name="Yes" type="Button" parent="TextureRect/11/HBoxContainer"]
 texture_filter = 1
 layout_mode = 2
 size_flags_horizontal = 3
@@ -508,7 +798,8 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_eopph")
 text = " > Yes <"
 flat = true
 
-[node name="Panel" type="Panel" parent="TextureRect/8/HBoxContainer/Yes"]
+[node name="Panel" type="Panel" parent="TextureRect/11/HBoxContainer/Yes"]
+modulate = Color(1, 1, 1, 0.784314)
 show_behind_parent = true
 texture_filter = 1
 layout_mode = 0
@@ -516,7 +807,7 @@ offset_right = 200.0
 offset_bottom = 40.0
 mouse_filter = 2
 
-[node name="No" type="Button" parent="TextureRect/8/HBoxContainer"]
+[node name="No" type="Button" parent="TextureRect/11/HBoxContainer"]
 texture_filter = 1
 layout_mode = 2
 size_flags_horizontal = 3
@@ -526,7 +817,18 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_eopph")
 text = "> No <"
 flat = true
 
-[node name="9" parent="TextureRect" instance=ExtResource("5_27d7y")]
+[node name="12" parent="TextureRect" instance=ExtResource("5_27d7y")]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 24.0
+offset_right = 224.0
+offset_bottom = 184.0
+text = "> Attemping to connect to \"_£sAD_sATaN\"s livestream . . .
+
+> Title : \"[ RED ROOM ] Over 4 people, join now\""
+metadata/_edit_lock_ = true
+
+[node name="13" parent="TextureRect" instance=ExtResource("5_27d7y")]
 layout_mode = 0
 offset_left = 24.0
 offset_top = 24.0
@@ -544,6 +846,8 @@ offset_bottom = 223.0
 mouse_filter = 2
 metadata/_edit_lock_ = true
 
+[connection signal="finished" from="Wind" to="." method="_on_wind_finished"]
+[connection signal="timeout" from="TextureRect/Timer" to="." method="_on_timer_timeout"]
 [connection signal="button_up" from="TextureRect/4/VBoxContainer/1" to="." method="_on__button_up"]
 [connection signal="button_up" from="TextureRect/4/VBoxContainer/2" to="." method="_on__button_up"]
 [connection signal="button_up" from="TextureRect/4/VBoxContainer/3" to="." method="_on__button_up"]
@@ -553,5 +857,14 @@ metadata/_edit_lock_ = true
 [connection signal="button_up" from="TextureRect/6/VBoxContainer/1" to="." method="_on__button_up"]
 [connection signal="button_up" from="TextureRect/6/VBoxContainer/2" to="." method="_on__button_up"]
 [connection signal="button_up" from="TextureRect/6/VBoxContainer/3" to="." method="_on__button_up"]
-[connection signal="button_up" from="TextureRect/8/HBoxContainer/Yes" to="." method="_on_yes_button_up"]
-[connection signal="button_up" from="TextureRect/8/HBoxContainer/No" to="." method="_on_no_button_up"]
+[connection signal="button_up" from="TextureRect/7/VBoxContainer/1" to="." method="_on__button_up"]
+[connection signal="button_up" from="TextureRect/7/VBoxContainer/2" to="." method="_on__button_up"]
+[connection signal="button_up" from="TextureRect/7/VBoxContainer/3" to="." method="_on__button_up"]
+[connection signal="button_up" from="TextureRect/8/VBoxContainer/1" to="." method="_on__button_up"]
+[connection signal="button_up" from="TextureRect/8/VBoxContainer/2" to="." method="_on__button_up"]
+[connection signal="button_up" from="TextureRect/8/VBoxContainer/3" to="." method="_on__button_up"]
+[connection signal="button_up" from="TextureRect/9/VBoxContainer/1" to="." method="_on__button_up"]
+[connection signal="button_up" from="TextureRect/9/VBoxContainer/2" to="." method="_on__button_up"]
+[connection signal="button_up" from="TextureRect/9/VBoxContainer/3" to="." method="_on__button_up"]
+[connection signal="button_up" from="TextureRect/11/HBoxContainer/Yes" to="." method="_on_yes_button_up"]
+[connection signal="button_up" from="TextureRect/11/HBoxContainer/No" to="." method="_on_no_button_up"]
