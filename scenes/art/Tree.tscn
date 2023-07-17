@@ -6,7 +6,6 @@
 size = Vector2(2.96728, 2.10309)
 
 [node name="Tree" type="StaticBody2D"]
-top_level = true
 position = Vector2(0, 4.76837e-07)
 scale = Vector2(2.02206, 2.13971)
 

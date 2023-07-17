@@ -37,18 +37,22 @@ func _on_tv_finished():
 	$TV.play()
 
 func _on_npc_b_body_entered(body):
-	kill = true
-	animationPlayer.queue("FadeToRed_FromWhite")
+	if body == player:
+		kill = true
+		animationPlayer.queue("FadeToRed_FromWhite")
 func _on_npc_b_body_exited(body):
-	kill = false
-	if killed != true:
-		animationPlayer.queue("FadeToWhite_FromRed")
+	if body == player:
+		kill = false
+		if killed != true:
+			animationPlayer.queue("FadeToWhite_FromRed")
 
 func _on_return_body_entered(body):
-	door.play()
-	player.position = Vector2(294, 64)
-	animationPlayer.play("Load_CH2")
-	bedRoomDoor.visible = true
-	bedRoomDoor.monitoring = true
-	frame.modulate = Color(1, 1, 1)
-	self.queue_free()
+	if body == player:
+		door.play()
+		player.position = Vector2(294, 64)
+		animationPlayer.play("Load_CH2")
+		bedRoomDoor.position = Vector2(0,0)
+		bedRoomDoor.visible = true
+		bedRoomDoor.monitoring = true
+		frame.modulate = Color(1, 1, 1)
+		self.queue_free()

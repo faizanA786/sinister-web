@@ -391,6 +391,7 @@ polygon = PackedVector2Array(360, 16, 120, 16, 120, 24, 360, 24)
 position = Vector2(232, 160)
 
 [node name="Cover" type="ColorRect" parent="."]
+visible = false
 top_level = true
 layout_mode = 0
 offset_left = 112.0
@@ -410,3 +411,12 @@ offset_right = 360.0
 offset_bottom = 224.0
 color = Color(1, 0, 0, 1)
 metadata/_edit_lock_ = true
+
+[node name="Label" type="Label" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 184.0
+offset_top = 88.0
+offset_right = 299.0
+offset_bottom = 114.0
+text = "END OF ALPHA"

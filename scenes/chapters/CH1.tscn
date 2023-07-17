@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/CH1.gd" id="1_ag4vk"]
 [ext_resource type="AudioStream" uid="uid://cekolcxupprmi" path="res://assets/audio/typing.wav" id="2_s562v"]
 [ext_resource type="AudioStream" uid="uid://h5r7dwvmx08h" path="res://assets/audio/glitch.wav" id="3_yrcqa"]
-[ext_resource type="AudioStream" uid="uid://du5a2c7qgiwrf" path="res://assets/audio/vhs_startup.mp3" id="4_ck337"]
+[ext_resource type="AudioStream" uid="uid://83ymksphhvwg" path="res://assets/audio/startup.mp3" id="4_dk8pm"]
 [ext_resource type="AudioStream" uid="uid://c1athksnwqs0c" path="res://assets/audio/voice.mp3" id="5_kwufj"]
 [ext_resource type="Shader" path="res://scripts/Filter.gdshader" id="5_sy8us"]
 [ext_resource type="Texture2D" uid="uid://drqcj8d5bxhya" path="res://assets/sprites/bar.png" id="6_ygj84"]
@@ -525,8 +525,8 @@ stream = ExtResource("3_yrcqa")
 volume_db = -2.0
 
 [node name="Initiate" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("4_ck337")
-volume_db = 5.0
+stream = ExtResource("4_dk8pm")
+volume_db = 10.0
 pitch_scale = 0.95
 autoplay = true
 

@@ -5,7 +5,6 @@ func _ready():
 
 func _on_play_button_up():
 	$Type.play()
-	$Wind.stop()
 	$AnimationPlayer.play("FadeTo_CH1")
 
 func to_CH1():

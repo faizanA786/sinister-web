@@ -4,7 +4,7 @@ const SPEED = 40
 var target = null
 var lookAt = 0
 enum{GRAVEL,WOOD,STONE}
-var soundState = GRAVEL
+var soundState = STONE
 var bloody = false
 @onready var bloodText = load("res://assets/sprites/Blood1.png")
 
@@ -18,6 +18,8 @@ func _input(event):
 			$FootstepGravel.play()
 		elif soundState == WOOD:
 			$FootstepWood.play()
+		elif soundState == STONE:
+			$FootstepRock.play()
 		$Footstep.start()
 
 func _physics_process(delta):
@@ -43,6 +45,9 @@ func _on_footstep_timeout():
 		elif soundState == WOOD:
 			$FootstepWood.set_pitch_scale(randf_range(0.76, 0.98))
 			$FootstepWood.play()
+		elif soundState == STONE:
+			$FootstepRock.set_pitch_scale(randf_range(0.88, 1.05))
+			$FootstepRock.play()
 		$Footstep.start()
 	if bloody == true:
 		blood()

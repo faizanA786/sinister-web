@@ -134,6 +134,18 @@ tracks/2/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TextureRect/Title:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_4s45l"]
 length = 0.001
@@ -192,6 +204,18 @@ tracks/4/path = NodePath("Credits:modulate")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("TextureRect/Title:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -259,7 +283,7 @@ libraries = {
 [node name="Type" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("1_pojex")
 volume_db = 10.0
-pitch_scale = 0.4
+pitch_scale = 0.9
 
 [node name="Wind" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_r1ouu")
@@ -298,28 +322,28 @@ offset_bottom = 224.0
 texture = ExtResource("5_tn78x")
 metadata/_edit_lock_ = true
 
-[node name="Play" type="Button" parent="TextureRect"]
+[node name="Title" type="Label" parent="TextureRect"]
 texture_filter = 1
-layout_mode = 2
-offset_left = 72.0
-offset_top = 144.0
-offset_right = 168.0
-offset_bottom = 168.0
-size_flags_vertical = 3
-theme_override_colors/font_hover_color = Color(0.737255, 0.992157, 0.0784314, 1)
+layout_mode = 0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 231.0
+offset_bottom = 58.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("4_phh37")
-theme_override_font_sizes/font_size = 16
-theme_override_styles/focus = SubResource("StyleBoxEmpty_3bl1l")
-text = "[ Launch ]"
-flat = true
+theme_override_font_sizes/font_size = 30
+text = "SINISTER WEB"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Label" type="Label" parent="TextureRect"]
 texture_filter = 1
 layout_mode = 0
 offset_left = 24.0
-offset_top = 24.0
+offset_top = 64.0
 offset_right = 224.0
-offset_bottom = 120.0
+offset_bottom = 160.0
 theme_override_fonts/font = ExtResource("4_phh37")
 text = "Username : Guest351
 Friends online : 0
@@ -327,7 +351,21 @@ Friends online : 0
 Users online : 792"
 horizontal_alignment = 1
 vertical_alignment = 1
-metadata/_edit_lock_ = true
+
+[node name="Play" type="Button" parent="TextureRect"]
+texture_filter = 1
+layout_mode = 2
+offset_left = 72.0
+offset_top = 168.0
+offset_right = 168.0
+offset_bottom = 192.0
+size_flags_vertical = 3
+theme_override_colors/font_hover_color = Color(0.737255, 0.992157, 0.0784314, 1)
+theme_override_fonts/font = ExtResource("4_phh37")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/focus = SubResource("StyleBoxEmpty_3bl1l")
+text = "[ Launch ]"
+flat = true
 
 [node name="Disclaimer" type="Control" parent="."]
 modulate = Color(1, 1, 1, 0)
@@ -388,6 +426,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+metadata/_edit_lock_ = true
 
 [node name="Label" type="Label" parent="Credits"]
 self_modulate = Color(1.5, 1.5, 1.5, 1)
@@ -421,7 +460,7 @@ stream = ExtResource("1_pojex")
 pitch_scale = 1.5
 
 [node name="Death" type="Timer" parent="Credits/Label"]
-wait_time = 4.0
+wait_time = 3.0
 one_shot = true
 
 [node name="Expand" type="Timer" parent="Credits/Label"]

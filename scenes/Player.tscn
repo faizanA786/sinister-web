@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://cavu1r2dpsvxy"]
+[gd_scene load_steps=8 format=3 uid="uid://cavu1r2dpsvxy"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_0a1qe"]
 [ext_resource type="AudioStream" uid="uid://bxpr32k1hd5l1" path="res://assets/audio/gravel_walk.wav" id="2_ixky5"]
 [ext_resource type="Texture2D" uid="uid://c1t5b7aallwo2" path="res://assets/sprites/Player.png" id="3_1lk52"]
 [ext_resource type="AudioStream" uid="uid://djniic4m60nid" path="res://assets/audio/wood_walk.wav" id="3_tqu5a"]
+[ext_resource type="AudioStream" uid="uid://dto14p4qvia86" path="res://assets/audio/rock_walk.mp3" id="4_w31cm"]
 [ext_resource type="Texture2D" uid="uid://1thk3mg4b1js" path="res://assets/sprites/Pointer.png" id="5_1rkop"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sf4th"]
@@ -23,13 +24,16 @@ stream = ExtResource("3_tqu5a")
 volume_db = 20.0
 pitch_scale = 0.9
 
+[node name="FootstepRock" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_w31cm")
+pitch_scale = 1.05
+
 [node name="Footstep" type="Timer" parent="."]
 wait_time = 0.7
 one_shot = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(-0.31498, -9.01806e-07)
 rotation = 1.5708
 scale = Vector2(0.759134, 0.722076)
 texture = ExtResource("3_1lk52")

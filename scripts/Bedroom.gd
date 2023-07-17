@@ -19,9 +19,11 @@ func _on_timer_timeout():
 	$Label/Expand.start()
 
 func _on_npc_c_body_entered(body):
-	kill = true
-	animationPlayer.queue("FadeToRed_FromWhite")
+	if body == player:
+		kill = true
+		animationPlayer.queue("FadeToRed_FromWhite")
 func _on_npc_c_body_exited(body):
-	kill = false
-	if killed != true:
-		animationPlayer.queue("FadeToWhite_FromRed")
+	if body == player:
+		kill = false
+		if killed != true:
+			animationPlayer.queue("FadeToWhite_FromRed")
